@@ -1,13 +1,14 @@
-@use "Common";
+$baseColor :#008080;
 
 header {
   width: 100%;
-  background: Common.$baseColor;
+  background: $baseColor;
 
   p {
     padding: 24px;
     color: white;
     font-weight: bold;
     font-size: 1.5rem;
+    margin: 0;
   }
 }
