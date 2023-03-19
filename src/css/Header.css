@@ -1,0 +1,15 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  background: #008080;
+}
+header p {
+  padding: 24px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}/*# sourceMappingURL=Header.css.map */

@@ -1,6 +1,7 @@
 @use "Common";
 
 header {
+  width: 100%;
   background: Common.$baseColor;
 
   p {
