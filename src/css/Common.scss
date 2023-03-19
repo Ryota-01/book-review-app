@@ -1,0 +1,32 @@
+
+$baseColor :#008080;
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin head-text {
+  text-align: center;
+  font-weight: bold;
+  font-weight: 1.2rem;
+  padding: 20px;
+}
+
+@mixin form {
+  width: 500px;
+  margin: 0 auto;
+}
+
+@mixin label {
+  display: inline-block;
+  width: 200px;
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+@mixin input {
+  display: inline-block;
+  width: 200px;
+  margin-left: 20px;
+}

@@ -1,0 +1,27 @@
+@use 'Common';
+
+.container {
+  width: 800px;
+  margin: 50px auto 50px auto;
+  
+  p {
+    @include Common.head-text;
+  }
+
+  .signup-form {
+
+    @include Common.form;
+
+    label {
+      @include Common.label;
+    }
+
+    input {
+      @include Common.input;
+    }
+
+    button {
+    }
+  }
+
+}

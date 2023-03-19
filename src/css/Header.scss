@@ -1,0 +1,12 @@
+@use "Common";
+
+header {
+  background: Common.$baseColor;
+
+  p {
+    padding: 24px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}
