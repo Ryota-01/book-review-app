@@ -3,18 +3,21 @@ import { useRef } from 'react'
 import { useState } from 'react';
 import { useCookies } from "react-cookie";
 import { useNavigate, Navigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { signIn, signOut } from '../userSlice'
 import axios from 'axios';
 import Header from './Header';
 
 function Signup() {
+  const user = useSelector((state) => state.user.isSignIn)
+  const dispatch = useDispatch();
   const navigate = useNavigate('')
   const [errorMessage, setErrorMessage] = useState('')
   const {register, handleSubmit, formState: { errors }} = useForm('')
   const [cookies, setCookie, removeCookie] = useCookies()
-  const url = {process.env.REACT_APP_API_URL};
-  console.log(url)
+  const url = process.env.REACT_APP_API_URL;
 
   const onSubmit = (e) => {
     const data = ({
@@ -26,13 +29,15 @@ function Signup() {
     axios.post(`${url}/users`, data)
     .then((res) => {
       const token = res.data.token;
-      setCookie("token", token)
+      setCookie("token", token);
+      dispatch(signIn());
+      console.log(res.data.token);
       navigate('/login');
     })
     .catch((err) => {
-      setErrorMessage(err)
-      console.log('error!');
+      setErrorMessage('ユーザー登録に失敗しました')
     })
+    if(user) return <Navigate to="/" />
   };
 
   return (
@@ -98,8 +103,8 @@ function Signup() {
               />
                 {errors.file?.message && <p className='required-errmsg'>{errors.file.message}</p>}
             </li>
-
-            <p><button className='send-btn'>send</button></p>
+            <p>{errorMessage}</p>
+            <p><button className='send-btn'>signup</button></p>
           </ul>
         </form>
         <Link to="/login">
