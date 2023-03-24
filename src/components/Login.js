@@ -45,7 +45,7 @@ function Login() {
 
           <ul>
             <li className='input-area'>
-              <label>e-mail</label>
+              <label htmlFor="e-mail">e-mail</label>
               <input
                 className='email-area'
                 {...register('email', {required: 'メールアドレスを入力してください'})}
@@ -55,7 +55,7 @@ function Login() {
             </li>
 
             <li className='input-area'>
-              <label>password</label>
+              <label htmlFor="password">password</label>
               <input
                 className='password-area'
                 {...register('password', {required: 'パスワードを入力してください'})}

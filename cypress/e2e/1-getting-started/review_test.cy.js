@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-describe('初期レビューアプリを訪れる', () => {
+describe('書籍レビューアプリを訪れる', () => {
     it('書籍レビューアプリを訪れる', () => {
-    cy.visit('http://localhost:3000/')
-    cy.get('input[name="id"]')                //ID入力欄を取得
-    .type('test')                             //ID欄に文字を入力
+    cy.visit('http://localhost:3000/signup')
+    cy.get('input[name="name"]')                //お名前入力欄を取得
+    .type('test')                             //お名前欄に文字を入力
 
     cy.get('input[name="email"]')             //e-mail入力欄を取得
     .type('sample')                           //e-mail欄に間違ったアドレスを入力 ⇨　アラート表示

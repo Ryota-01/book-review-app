@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { signIn, signOut } from '../userSlice'
+import { url } from "../Url";
+import Compressor from 'compressorjs';
 import axios from 'axios';
 import Header from './Header';
 
@@ -16,29 +18,44 @@ function Signup() {
   const navigate = useNavigate('')
   const [errorMessage, setErrorMessage] = useState('')
   const {register, handleSubmit, formState: { errors }} = useForm('')
+  const {icon, setIcon} = useState()
   const [cookies, setCookie, removeCookie] = useCookies()
-  const url = process.env.REACT_APP_API_URL;
+  // const url = process.env.REACT_APP_API_URL;
 
   const onSubmit = (e) => {
+
     const data = ({
       name: e.name,
       email: e.email,
       password: e.password
     })
 
+    const fileData = new FormData()
+    fileData.append('iconUrl', e.file[0])
+    console.log(fileData.get('iconUrl'))
+
     axios.post(`${url}/users`, data)
     .then((res) => {
-      const token = res.data.token;
-      setCookie("token", token);
-      dispatch(signIn());
-      console.log(res.data.token);
+      const token = res.data.token
+      setCookie("token", token)
+      dispatch(signIn())
+      axios.post('https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/uploads', fileData, { 
+        headers: {
+          'accept': 'application/json',
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${cookies.token}`,
+        }
+      })
+      .then((res) => {
       navigate('/login');
+      })
     })
     .catch((err) => {
       setErrorMessage('ユーザー登録に失敗しました')
     })
     if(user) return <Navigate to="/" />
   };
+
 
   return (
     <>
