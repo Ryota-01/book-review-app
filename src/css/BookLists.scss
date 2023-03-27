@@ -1,0 +1,45 @@
+@use 'Common';
+
+$baseColor :#008080;
+
+.book-container {
+  @include Common.container(80%, none);
+
+  .head-text {
+    @include Common.HeadText();
+  }
+  
+  .booklists-area {
+    width: 94%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    a {
+      width: 31%;
+      height: 190px;
+      margin: 36px 0;
+    }
+  
+    ul {
+      width: 100%;
+      height: 100%;
+      // height: 200px;
+      background: #faf0e6;
+      text-align: center;
+      border-radius: 10px;
+      padding: 20px 0;
+  
+      li {
+        width: 100%;
+        color: $baseColor;
+      }
+
+      .book-title {
+        font-weight: bold;
+      }
+    }
+  }
+}
+

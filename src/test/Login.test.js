@@ -19,6 +19,10 @@ it('Login',() => {
   );
   debug(screen.queryByLabelText('password'));
   debug(screen.queryByLabelText('e-mail'));
+  const button = screen.getByRole('button');
+  expect(button).toBeInTheDocument();  
+  const a = 1 + 1;
+  expect(a).toBe(3);
 
   // const labelElement = screen.getByLabelText(/password/i);
   // expect(labelElement).toBeInTheDocument();

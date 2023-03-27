@@ -5,7 +5,7 @@ function Header() {
   return (
     <>
     <header>
-      <p>Book Review App</p>
+      <h1><p>Book Review App</p></h1>
     </header>
     </>
   )

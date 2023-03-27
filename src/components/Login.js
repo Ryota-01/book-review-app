@@ -7,7 +7,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { signIn } from '../userSlice'
+import { url } from "../Url";
 import axios from 'axios';
+import '../css/Login.scss';
+
 
 function Login() {
   const user = useSelector((state) => state.user.isSignIn)
@@ -16,21 +19,16 @@ function Login() {
   const {register, handleSubmit, formState: { errors }} = useForm()
   const [errorMessage, setErrorMessage] = useState('')
   const [cookies, setCookie, removeCookie] = useCookies()
-  const url = process.env.REACT_APP_API_URL;
 
   const onSubmit = (e) => {
-      const data = ({
-        email: e.email,
-        password: e.password
-      })
-
-      axios.post(`${url}/signin`, data)
+      axios.post(`${url}/signin`, {email: e.email, password: e.password})
       .then((res) => {
         setCookie("token", res.data.token)
         dispatch(signIn())
-        navigate('/')
+        navigate('/booklists')
       })
       .catch((err) => {
+        console.log(err.response.data)
         setErrorMessage(err.response.data.ErrorMessageJP)
       })
   }
@@ -39,36 +37,47 @@ function Login() {
     <>
       <Header />
       <div className='container'>
-        <p>LOGIN</p>
+        <p className='head-text'>ログイン</p>
 
         <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
-
           <ul>
             <li className='input-area'>
               <label htmlFor="e-mail">e-mail</label>
               <input
                 className='email-area'
-                {...register('email', {required: 'メールアドレスを入力してください'})}
+                {...register('email', {required: '*メールアドレスを入力してください'})}
                 type="email"
               />
                 {errors.email?.message && <p className='required-errmsg'>{errors.email.message}</p>}
             </li>
 
             <li className='input-area'>
-              <label htmlFor="password">password</label>
+              <label htmlFor="password">パスワード</label>
               <input
                 className='password-area'
-                {...register('password', {required: 'パスワードを入力してください'})}
+                {...register('password', {
+                  required: {
+                    value: true,
+                    message: '*パスワードを入力してください'
+                },
+                minLength: {
+                  value: 5,
+                  message: '*パスワードは5文字以上入力してください'
+                }
+              })}
                 type="password"
               />
                 {errors.password?.message && <p className='required-errmsg'>{errors.password.message}</p>}
             </li>
           </ul>
-          <p>{errorMessage}</p>
-          <p><button className='send-btn'>login</button></p>
-  
+          <p className='failure-msg'>{errorMessage}</p>
+          <p><button className='send-btn'>ログイン</button></p>
         </form>
-        <p>ユーザー登録は<Link to="/signup" >こちら</Link></p>
+
+        <p className='go-to-signup'>
+          ユーザー登録は<Link to="/signup" >こちら</Link>
+        </p>
+
       </div>
     </>
   )

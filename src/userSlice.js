@@ -14,7 +14,7 @@ export const userSlice = createSlice({
     },
     signOut: (state) => {
       state.isSignIn = false;
-    }
+    },
   }
 });
 
