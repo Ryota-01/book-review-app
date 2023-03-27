@@ -6,9 +6,9 @@ import { url } from "../Url";
 import { signIn, signOut } from '../userSlice'
 import axios from 'axios';
 import Header from './Header';
-import '../css/BookLists.scss';
+import '../css/Home.scss';
 
-function BookLists() {
+function Home() {
   const [books, setBooks] = useState([])
   const [cookies, setCookie, removeCookie] = useCookies()
 
@@ -28,15 +28,15 @@ function BookLists() {
   return (
     <>
       <Header />
-      <div className='book-container'>
-        <h2 className='head-text'>書籍一覧</h2>
-        <div className='booklists-area'>
+      <section className='booklists'>
+        <h2 className='booklists__title'>書籍一覧</h2>
+        <div className='booklists__wrapper'>
           {books.map((book) => {
             console.log(book)
             return(
               <Link to='{book.url}'>
-                <ul key={book.id}>
-                  <li key={book.id} className="book-title">
+                <ul key={book.id} className='booklists__wrapper-item'>
+                  <li key={book.id} className="booklists__wrapper-title">
                     『{book.title}』
                   </li>
                 </ul>
@@ -44,9 +44,9 @@ function BookLists() {
             )
           })}
         </div>
-      </div>
+      </section>
     </>
   )
 }
 
-export default BookLists
+export default Home

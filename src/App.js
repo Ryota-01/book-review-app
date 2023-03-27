@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes, Link } from 'react-router-dom';
-import BookLists from './components/BookLists';
+import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
 
@@ -26,8 +26,8 @@ function App() {
         />
 
         <Route 
-          exact path="/booklists"
-          element={<BookLists />}
+          exact path="/home"
+          element={<Home />}
         />
 
         
