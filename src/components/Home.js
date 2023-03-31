@@ -9,21 +9,26 @@ import Header from './Header';
 import '../css/Home.scss';
 
 function Home() {
-  const [books, setBooks] = useState([])
-  const [cookies, setCookie, removeCookie] = useCookies()
+  const [books, setBooks] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies();
+  const [pageBtn, setPageBtn] = useState(1);
 
   useEffect(() => {
     axios.get(`${url}/public/books`, {
       'Authorization': `Bearer ${cookies.token}`,
     })
     .then((res) => {
-      console.log(res.data)
+      console.log(res.data.next)
       setBooks(res.data)
     })
     .catch((err) => {
       console.log(err.response.data)
     })
   }, []);
+
+  const handleOnClick = () => {
+    
+  }
 
   return (
     <>
@@ -34,16 +39,17 @@ function Home() {
           {books.map((book) => {
             console.log(book)
             return(
-              <Link to='{book.url}'>
-                <ul key={book.id} className='booklists__wrapper-item'>
-                  <li key={book.id} className="booklists__wrapper-title">
-                    『{book.title}』
+              <Link key={book.id} to='{book.url}'>
+                <ul className='booklists__wrapper-item'>
+                  <li className="booklists__wrapper-title">
+                    『 {book.title} 』
                   </li>
                 </ul>
               </Link>
             )
           })}
         </div>
+        <button onClick={handleOnClick}>{pageBtn}</button>
       </section>
     </>
   )
