@@ -13,13 +13,13 @@ import Pagenation from './Pagenation';
 function Home() {
   const [books, setBooks] = useState([]);                   //書籍一覧を格納する変数
   const [cookies] = useCookies();
+  const baseUrl = 'https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/public/books?offset=';
 
   useEffect(() => {                                         //書籍一覧APIを取得
-    axios.get(`${url}/public/books`, {
+    axios.get(baseUrl, {
       'Authorization': `Bearer ${cookies.token}`,
     })
     .then((res) => {
-      console.log(res.data)
       setBooks(res.data)
     })
     .catch((err) => {
@@ -31,7 +31,9 @@ function Home() {
     <>
       <Pagenation
         books={books}
-      />        {/*Pagenationコンポーネントに書籍一覧をpropsで渡す*/}
+        setBooks={setBooks}
+        baseUrl={baseUrl}
+      />                        {/*Pagenationコンポーネントに書籍一覧をpropsで渡す*/}
     </>
    )}
 

@@ -25,7 +25,7 @@ function Login() {
       .then((res) => {
         setCookie("token", res.data.token)
         dispatch(signIn())
-        navigate('/booklists')
+        navigate('/home')
       })
       .catch((err) => {
         console.log(err.response.data)

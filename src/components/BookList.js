@@ -7,7 +7,8 @@ import Pagenation from './Pagenation';
 import axios from 'axios';
 
 function BookList(props) {
-  const { books, currentBookLists } = props;
+
+  const { books, currentBookLists, setBackLists, setNextLists } = props;
 
   return(
     <>
