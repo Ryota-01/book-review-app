@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
-
+import BookList from './BookList';
 
 function Pagenation(props) {
-  console.log(props)
+  const { books } = props;
 
   const [itemsOffset, setItemsOffset] = useState(0)
 
@@ -12,12 +12,10 @@ function Pagenation(props) {
   const endOffset = itemsOffset + itemsPerPage;           //画面上に表示している書籍の末尾の要素数
 
   const currentBookLists = props.books.slice(itemsOffset, endOffset)
-
-  // props.setCurrentBookLists(currentBookLists)
-
+  
   return (
     <div>
-      Pagenation
+      <BookList books={books} currentBookLists={currentBookLists} />
     </div>
   )
 }
