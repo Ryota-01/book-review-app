@@ -1,8 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
 
 function PagenationBtn() {
-  const [currentPage, setCurrentPage] = useState(1)
   
   return (
     <div>

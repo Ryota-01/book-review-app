@@ -1,5 +1,4 @@
 import React from 'react'
-import { useRef } from 'react'
 import { useState } from 'react';
 import { useCookies } from "react-cookie";
 import { useNavigate, Navigate } from 'react-router-dom';
@@ -20,7 +19,6 @@ function Signup() {
   const [errorMessage, setErrorMessage] = useState('')
   const {register, handleSubmit, formState: { errors }} = useForm('')
   const [cookies, setCookie, removeCookie] = useCookies()
-  const [compressedFile, setCompressedFile] = useState(null);
 
   const onSubmit = (e) => {
 
