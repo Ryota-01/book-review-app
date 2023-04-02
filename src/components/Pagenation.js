@@ -2,13 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BookList from './BookList';
-import PagenationBtn from './PagenationBtn';
 import axios from 'axios';
 import { useCookies } from "react-cookie";
 
 function Pagenation(props) {
 
-  const { books, baseUrl, setBooks } = props;
+  const { books, currentUrl, setBooks } = props;
   const {nextLists, setNextLists} = useState([])
   const {backLists, setBackLists} = useState([])
   const [itemsOffset, setItemsOffset] = useState(0)
@@ -17,10 +16,12 @@ function Pagenation(props) {
   const currentBookLists = props.books.slice(itemsOffset, endOffset)
   const pageCount = Math.ceil(books.length / itemsPerPage);
   const [cookies] = useCookies();
-  const [offset, setOffset] = useState(10)
+  const [offset, setOffset] = useState(0)
 
   const backBtnClick = () => {
-    axios.request(`${baseUrl}-${offset}`, {
+    setOffset(offset - itemsPerPage)
+    console.log(offset)
+    axios.request(`${currentUrl}${offset}`, {
       'Authorization': `Bearer ${cookies.token}`,
     })
     .then((res) => {
@@ -33,7 +34,10 @@ function Pagenation(props) {
   }
 
   const nextBtnClick = () => {
-    axios.request(`${baseUrl}${offset}`, {
+    const new_offset = 10 + itemsPerPage
+    setOffset(new_offset)
+    console.log(offset)
+    axios.request(`${currentUrl}${offset}`, {
       'Authorization': `Bearer ${cookies.token}`,
     })
     .then((res) => {
@@ -53,15 +57,9 @@ function Pagenation(props) {
         setBackLists={setBackLists}
         setNextLists={setNextLists}
       />
-      <p></p>
       <button onClick={backBtnClick}>BACK</button>
       <button onClick={nextBtnClick}>NEXT</button>
 
-      <PagenationBtn
-        pageCount={pageCount}
-        itemsPerPage={itemsPerPage}
-        baseUrl={baseUrl}
-      />
     </div>
   )
 }
