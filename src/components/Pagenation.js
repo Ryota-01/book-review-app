@@ -1,48 +1,54 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import BookList from './BookList';
 import axios from 'axios';
 import { useCookies } from "react-cookie";
+import { url } from "../Url";
+import '../css/Pagenation.scss'
 
 function Pagenation(props) {
+  console.log(props)
+  const {
+    currentBooksList,
+    setCurrentBooksList,
+    apiUrl,
+    offset,
+    setOffset
+  } = props;
 
-  const { books, currentUrl, setBooks } = props;
-  const {nextLists, setNextLists} = useState([])
-  const {backLists, setBackLists} = useState([])
-  const [itemsOffset, setItemsOffset] = useState(0)
-  const itemsPerPage = 10;                                //画面上に表示する書籍の数
-  const endOffset = itemsOffset + itemsPerPage;           //画面上に表示している書籍の末尾の要素数
-  const currentBookLists = props.books.slice(itemsOffset, endOffset)
-  const pageCount = Math.ceil(books.length / itemsPerPage);
   const [cookies] = useCookies();
-  const [offset, setOffset] = useState(0)
+  const [nextList, setNextList] = useState([]);
+
+  // const [itemsOffset, setItemsOffset] = useState(0);
+  // const [disabled, setDisabled] = useState(true)
+  // const itemsPerPage = 10;                                //画面上に表示する書籍の数
+  // const endOffset = itemsOffset + itemsPerPage;           //画面上に表示している書籍の末尾の要素数
+  // const currentBookLists = props.currentBooksList.slice(itemsOffset, endOffset)
+  // const pageCount = Math.ceil(currentBooksList.length / itemsPerPage);
 
   const backBtnClick = () => {
-    setOffset(offset - itemsPerPage)
-    console.log(offset)
-    axios.request(`${currentUrl}${offset}`, {
+    axios.get(apiUrl + (offset - 20), {
       'Authorization': `Bearer ${cookies.token}`,
     })
     .then((res) => {
-      console.log(res.data)
-      setBooks(res.data)
+      setNextList(res.data)
+      setCurrentBooksList(res.data)
+      setOffset(offset - 10)
     })
     .catch((err) => {
       console.log(err)
     })
   }
 
+  console.log(offset)
+
   const nextBtnClick = () => {
-    const new_offset = 10 + itemsPerPage
-    setOffset(new_offset)
-    console.log(offset)
-    axios.request(`${currentUrl}${offset}`, {
+    axios.get(apiUrl + offset, {
       'Authorization': `Bearer ${cookies.token}`,
     })
     .then((res) => {
-      console.log(res.data)
-      setBooks(res.data)
+      setCurrentBooksList(res.data)
+      setOffset(offset + 10)
     })
     .catch((err) => {
       console.log(err)
@@ -52,13 +58,26 @@ function Pagenation(props) {
   return (
     <div>
       <BookList
-        books={books}
-        currentBookLists={currentBookLists}
-        setBackLists={setBackLists}
-        setNextLists={setNextLists}
+        currentBooksList={currentBooksList}
+        nextList={nextList}
       />
-      <button onClick={backBtnClick}>BACK</button>
-      <button onClick={nextBtnClick}>NEXT</button>
+      <div className='btn-area'>
+        <button
+          onClick={backBtnClick}
+          className="btn"
+          disabled={offset < 20}
+          >
+            BACK　＜
+        </button>
+
+        <button
+          onClick={nextBtnClick}
+          disabled={currentBooksList.length < 10}
+          className="btn"
+          >
+            ＞　NEXT
+        </button>
+      </div>
 
     </div>
   )
