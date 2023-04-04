@@ -5,7 +5,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { signIn, signOut } from '../userSlice'
+import { signIn } from '../userSlice'
 import { url } from "../Url";
 import Compressor from 'compressorjs';
 import axios from 'axios';
@@ -18,7 +18,7 @@ function Signup() {
   const navigate = useNavigate('')
   const [errorMessage, setErrorMessage] = useState('')
   const {register, handleSubmit, formState: { errors }} = useForm('')
-  const [cookies, setCookie, removeCookie] = useCookies()
+  const [cookies, setCookie ] = useCookies()
 
   const onSubmit = (e) => {
 

@@ -52,20 +52,31 @@ function Header() {
   
   return (
     <>
-    <header>
-      <h1>
-        <p>Book Review App</p>
-      </h1>
+      <header className='header'>
+        
+        <h1 className='header__heading'>Book Review App</h1>
 
-      {user ? 
-        <p>ようこそ {userName} さん</p> : <></>
-      }
+        <div className='header__wrapper'>
+          {user ? 
+            <p className='header__wrapper__user-name'>ようこそ {userName} さん</p> : <></>
+          }
 
-      {user ? 
-        <button onClick={logout}>ログアウト</button> : <button onClick={login}>ログイン</button>
-      }
-
-    </header>
+          {user ? 
+            <button
+              className='header__wrapper__logout-btn'
+              onClick={logout}
+            >
+              ログアウト
+            </button> : 
+            <button
+              className='header__wrapper__login-btn'
+              onClick={login}
+            >
+              ログイン
+            </button>
+          }
+        </div>
+      </header>
     </>
   )
 }

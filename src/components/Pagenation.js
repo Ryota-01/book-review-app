@@ -39,8 +39,6 @@ function Pagenation(props) {
     })
   }
 
-  console.log(offset)
-
   const nextBtnClick = () => {
     axios.get(apiUrl + offset, {
       'Authorization': `Bearer ${cookies.token}`,
@@ -68,7 +66,7 @@ function Pagenation(props) {
           >
             BACK　＜
         </button>
-
+        
         <button
           onClick={nextBtnClick}
           disabled={currentBooksList.length < 10}
