@@ -55,7 +55,6 @@ function Header() {
       <header className='header'>
         
         <h1 className='header__heading'>Book Review App</h1>
-
         <div className='header__wrapper'>
           {user ? 
             <p className='header__wrapper__user-name'>ようこそ {userName} さん</p> : <></>

@@ -17,8 +17,8 @@ function BookList(props) {
         <div className='booklists__wrapper'>
           {currentBooksList.map((book) => {                  //書籍一覧の配列の中身を、mapで個別に取得
             return(
-              <ul className='booklists__wrapper-item' key={book.id}>
-                <li className="booklists__wrapper-title">
+              <ul className='booklists__wrapper__list' key={book.id}>
+                <li className='booklists__wrapper__list-item'>
                   『 {book.title} 』
                 </li>
               </ul>

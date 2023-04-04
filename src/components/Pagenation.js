@@ -53,15 +53,15 @@ function Pagenation(props) {
   }
 
   return (
-    <div>
+    <div className='pagenation'>
       <BookList
         currentBooksList={currentBooksList}
         nextList={nextList}
       />
-      <div className='btn-area'>
+      <div className='pagenation__button-area'>
         <button
           onClick={backBtnClick}
-          className="btn"
+          className="pagenation__button-area__select"
           disabled={offset < 20}
           >
             BACK　＜
@@ -70,7 +70,7 @@ function Pagenation(props) {
         <button
           onClick={nextBtnClick}
           disabled={currentBooksList.length < 10}
-          className="btn"
+          className="pagenation__button-area__select"
           >
             ＞　NEXT
         </button>

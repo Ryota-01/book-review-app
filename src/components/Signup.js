@@ -59,17 +59,17 @@ function Signup() {
 
 
   return (
-    <>
+    <div className='signup'>
       <Header />
-      <div className='container'>
-        <p className='head-text'>新規登録</p>
+      <div className='signup__wrapper'>
+        <p className='signup__wrapper__title'>新規登録</p>
 
-        <form className='signup-form' onSubmit={handleSubmit(onSubmit)}>
-          <ul>
-            <li className='input-area'>
+        <form className='signup__wrapper__form' onSubmit={handleSubmit(onSubmit)}>
+          <ul className='signup__wrapper__form__list'>
+            <li className='signup__wrapper__form__list-item'>
               <label>お名前</label>
               <input
-                className='name-area'
+                className='signup__wrapper__form__list-item__name'
                 {...register('name', {required: '*お名前は入力必須項目です' })}
                 type="text"
                 placeholder="必須"
@@ -78,10 +78,10 @@ function Signup() {
               <br />
             </li>
 
-            <li className='input-area'>
+            <li className='signup__wrapper__form__list-item'>
               <label>e-mail</label>
               <input
-                className='email-area'
+                className='signup__wrapper__form__list-item__email'
                 {...register('email', {required: '*e-mailは入力必須項目です' })}
                 type="email"
                 placeholder="example@email.jp"
@@ -90,10 +90,10 @@ function Signup() {
               <br />
             </li>
 
-            <li className='input-area'>
+            <li className='signup__wrapper__form__list-item'>
               <label>パスワード</label>
               <input
-                className='password-area'
+                className='signup__wrapper__form__list-item__password'
                 {...register('password', {
                   required: {
                     value: true,
@@ -111,10 +111,10 @@ function Signup() {
               <br />
             </li>
 
-            <li className='input-area'>
+            <li className='signup__wrapper__form__list-item'>
               <label>アイコン画像(png,jpg)</label>
               <input
-                className='fileupload-area'
+                className='signup__wrapper__form__list-item__file'
                 {...register('file', {required: '*アイコン画像をアップロードしてください' })}
                 type="file"
                 accept="image/*, .png, .jpg"
@@ -131,7 +131,7 @@ function Signup() {
           </Link>
         </p>
       </div>
-    </>
+    </div>
   )
 }
 
