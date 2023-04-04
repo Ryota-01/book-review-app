@@ -5,6 +5,8 @@ const cookie = new Cookies();
 
 export const userSlice = createSlice({
   name: 'user',
+  email: 'email',
+  password: 'password',
   initialState: {
     isSignIn: cookie.get("token") !==undefined
   },

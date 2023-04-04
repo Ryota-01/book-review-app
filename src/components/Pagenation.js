@@ -7,7 +7,6 @@ import { url } from "../Url";
 import '../css/Pagenation.scss'
 
 function Pagenation(props) {
-  console.log(props)
   const {
     currentBooksList,
     setCurrentBooksList,

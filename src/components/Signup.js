@@ -28,7 +28,7 @@ function Signup() {
       password: e.password
     })
     
-    axios.post(`${url}/users`, data)
+    axios.post(`${url}users`, data)
     .then((res) => {
       const token = res.data.token
       setCookie("token", token)
@@ -45,7 +45,7 @@ function Signup() {
           })
           .then((res) => {
           dispatch(signIn())
-          navigate('/login');
+          navigate('/home');
           })    
         }
       })
