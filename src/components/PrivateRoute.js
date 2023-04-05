@@ -11,8 +11,7 @@ function PrivateRoute(props) {
   if(!user) {
     return <Navigate to='/login' />;
   }
-
-  return children
+  return <Home />
 }
 
 export default PrivateRoute
