@@ -10,10 +10,14 @@ function PublicRoute(props) {
   const user = useSelector((state) => state.user.isSignIn)
 
   if(user) {
-    <Navigate to='/home' />
+    return <Navigate to='/home' />
   }
 
-  return children
+  return (
+    <>
+      {children}
+    </>
+  )
 
 }
 

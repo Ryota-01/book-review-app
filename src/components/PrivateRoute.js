@@ -5,13 +5,18 @@ import Home from './Home'
 
 function PrivateRoute(props) {
   const { children } = props;
+  console.log(children)
   const user = useSelector((state) => state.user.isSignIn)
-  console.log(user)
 
   if(!user) {
     return <Navigate to='/login' />;
   }
-  return <Home />
+
+  return (
+    <>
+      {children}
+    </>
+  )
 }
 
 export default PrivateRoute

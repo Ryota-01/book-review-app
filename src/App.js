@@ -10,6 +10,8 @@ import PublicRoute from './components/PublicRoute';
 
 function App() {
 
+  const user = useSelector((state) => state.user.isSignIn)
+
   return (
     <div className="App">
       <Routes>
@@ -17,11 +19,10 @@ function App() {
           exact path="/"
           element={<Home />}
         />
-
         <Route 
           exact path="/home"
           element={
-            <PrivateRoute>
+            <PrivateRoute user={user}>
               <Home />
             </PrivateRoute>}
         />
@@ -29,14 +30,14 @@ function App() {
         <Route
           exact path="/login"
           element={
-            <PublicRoute>
+            <PublicRoute user={user}>
               <Login />
             </PublicRoute>}
         />
 
         <Route 
           exact path="/signup"
-          element={<PublicRoute><Signup /></PublicRoute>}
+          element={<PublicRoute user={user}><Signup /></PublicRoute>}
         />
 
 
