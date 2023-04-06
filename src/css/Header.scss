@@ -6,11 +6,30 @@ header {
   width: 100%;
   background: $baseColor;
 
-  p {
-    padding: 24px;
+
+  .header__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .header__wrapper__heading {
+      color: white;
+      padding: 20px;
+    }
+
+    .header__wrapper__logout-login-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  .header__user-name {
     color: white;
     font-weight: bold;
-    font-size: 1.5rem;
-    margin: 0;
   }
+
 }

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { url } from "../Url";
 import Pagenation from './Pagenation';
 import axios from 'axios';
+import '../css/BookList.scss';
 
 function BookList(props) {
 
