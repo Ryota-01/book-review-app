@@ -2,8 +2,29 @@
 
 .booklists {
 
-  .bookslists__wrapper {
-    background: blue;
+  .booklists__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .booklists__wrapper__list {
+      width: 31%;
+      height: 240px;
+      background: white;
+      margin-bottom: 30px;
+      border-radius: 6px;
+      filter: drop-shadow(0 3px 2px gray);
+      border-top: 6px solid gray;
+
+      .booklists__wrapper__list-item {
+        text-align: center;
+        padding: 12px;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+    }
   }
 
 }

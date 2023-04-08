@@ -36,12 +36,12 @@ function Login() {
   return (
     <>
       <Header />
-      <div className='container'>
-        <p className='head-text'>ログイン</p>
+      <div className='login__container'>
+        <h2 className='login__container__title'>ログイン</h2>
 
-        <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
-          <ul>
-            <li className='input-area'>
+        <form className='login__container__form' onSubmit={handleSubmit(onSubmit)}>
+          <ul className='login__container__form__list'>
+            <li className='login__container__form__list-item'>
               <label htmlFor="e-mail">e-mail</label>
               <input
                 className='email-area'
@@ -51,7 +51,7 @@ function Login() {
                 {errors.email?.message && <p className='required-errmsg'>{errors.email.message}</p>}
             </li>
 
-            <li className='input-area'>
+            <li className='login__container__form__list-item'>
               <label htmlFor="password">パスワード</label>
               <input
                 className='password-area'
@@ -71,10 +71,10 @@ function Login() {
             </li>
           </ul>
           <p className='failure-msg'>{errorMessage}</p>
-          <p><button className='send-btn'>ログイン</button></p>
+          <p><button className='login__container__login-btn'>ログイン</button></p>
         </form>
 
-        <p className='go-to-signup'>
+        <p className='login__container__signup'>
           ユーザー登録は<Link to="/signup" >こちら</Link>
         </p>
 

@@ -1,53 +1,24 @@
-@use 'Common';
 
-.container {
-  @include Common.container(50%, white);
+.login__container {
+  width: 80%;
+  margin: 0 auto;
 
-  .head-text {
-    @include Common.HeadText();
-  }
-
-  .login-form {
-    @include Common.signUpAndLoginFormArea();
-
-    ul li{
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 50px;
-
-      label {
-        display: block;
-        margin-left: 0;
-        text-align: left;
-        width: 160px;
-        font-size: 0.9rem;
-      }
-    }
-
-    input {
-      width: 60%;
-      display: block;
-    }
-
-    .failure-msg {
-      @include Common.FailureMsg();
-    }
-
-    .required-errmsg {
-      @include Common.RequiredErrmsg();
-    }
-
-    .send-btn {
-      @include Common.sendBtn();
-    }
-
-  }
-
-  .go-to-signup {
-    width: fit-content;
-    margin: 0 auto;
+  .login__container__title {
     text-align: center;
   }
 
+  .login__container__form {
+    width: 100%;
+    text-align: center;
+
+    .login__container__form__list {
+      width: 50%;
+      background: red;
+      margin: 20px auto;
+
+      .login__container__form__list-item {
+      }
+    }
+  }
 
 }

@@ -17,7 +17,11 @@ function App() {
       <Routes>
         <Route
           exact path="/"
-          element={<Home />}
+          element={
+            <PrivateRoute user={user}>
+              <Home />
+            </PrivateRoute>
+          }
         />
         <Route 
           exact path="/home"
@@ -37,7 +41,10 @@ function App() {
 
         <Route 
           exact path="/signup"
-          element={<PublicRoute user={user}><Signup /></PublicRoute>}
+          element={
+            <PublicRoute user={user}>
+              <Signup />
+            </PublicRoute>}
         />
 
 
