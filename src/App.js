@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from './components/Home';
 import UserEdit from './components/UserEdit';
+import PostReview from './components/PostReview';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import PrivateRoute from './components/PrivateRoute';
@@ -38,6 +39,14 @@ function App() {
           element={
             <PrivateRoute user={user}>
               <UserEdit />
+            </PrivateRoute>}
+        />
+
+        <Route 
+          exact path="/postreview"
+          element={
+            <PrivateRoute user={user}>
+              <PostReview />
             </PrivateRoute>}
         />
 

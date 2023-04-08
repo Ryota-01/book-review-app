@@ -20,6 +20,7 @@ function Home() {
       'Authorization': `Bearer ${cookies.token}`,
     })
     .then((res) => {
+      console.log(res)
       setCurrentBooksList(res.data)                     //取得した書籍一覧をセット
       setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
       setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
@@ -33,7 +34,7 @@ function Home() {
   return (
     <>
     <Header />
-    <Link to='/'><button>レビューを投稿する</button></Link>
+    <Link to='/postreview'><button>レビューを投稿する</button></Link>
     <Pagenation
       currentBooksList={currentBooksList}
       setCurrentBooksList={setCurrentBooksList}

@@ -26,7 +26,7 @@ function UserEdit() {
   })
 
   const onUpdata = (e) => {
-
+    console.log(e)
     const data = {
       name: e.name
     }
