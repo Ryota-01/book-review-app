@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from './components/Home';
+import UserEdit from './components/UserEdit';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import PrivateRoute from './components/PrivateRoute';
@@ -23,11 +24,20 @@ function App() {
             </PrivateRoute>
           }
         />
+
         <Route 
           exact path="/home"
           element={
             <PrivateRoute user={user}>
               <Home />
+            </PrivateRoute>}
+        />
+
+        <Route 
+          exact path="/useredit"
+          element={
+            <PrivateRoute user={user}>
+              <UserEdit />
             </PrivateRoute>}
         />
 

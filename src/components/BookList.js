@@ -21,7 +21,6 @@ function BookList(props) {
           })}
         </div>
       </section>
-
     </>
   )
 }

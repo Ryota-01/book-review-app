@@ -13,7 +13,6 @@ import '../css/Login.scss';
 
 
 function Login() {
-  // const user = useSelector((state) => state.user.isSignIn)
   const dispatch = useDispatch();
   const navigate = useNavigate('')
   const {register, handleSubmit, formState: { errors }} = useForm()

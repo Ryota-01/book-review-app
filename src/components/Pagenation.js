@@ -15,14 +15,13 @@ function Pagenation(props) {
   } = props;
 
   const [cookies] = useCookies();
-  const [nextList, setNextList] = useState([]);
+  // const [nextList, setNextList] = useState([]);
 
   const backBtnClick = () => {                            //BACKボタンを押した時の処理（前の10件を表示）
     axios.get(apiUrl + (offset - 20), {
       'Authorization': `Bearer ${cookies.token}`,
     })
     .then((res) => {
-      setNextList(res.data)
       setCurrentBooksList(res.data)
       setOffset(offset - 10)
     })
@@ -48,7 +47,6 @@ function Pagenation(props) {
     <div className='pagenation'>
       <BookList
         currentBooksList={currentBooksList}
-        nextList={nextList}
       />
       <div className='pagenation__button-area'>
         <button

@@ -69,8 +69,12 @@ function Header() {
             }
         </div>
 
-        {user ?
+        {
+        user ?
           <p className='header__user-name'>ようこそ {userName} さん</p> : <></>
+        }
+        {user ?
+          <p className='header__user-name'><Link to='/useredit'>ユーザー情報を編集</Link></p> : <></>
         }
       </header>
     </>

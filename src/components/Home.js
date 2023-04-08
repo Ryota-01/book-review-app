@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useCookies } from "react-cookie";
 import { url } from "../Url";
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Pagenation from './Pagenation';
 import '../css/Home.scss';
@@ -32,6 +33,7 @@ function Home() {
   return (
     <>
     <Header />
+    <Link to='/'><button>レビューを投稿する</button></Link>
     <Pagenation
       currentBooksList={currentBooksList}
       setCurrentBooksList={setCurrentBooksList}
