@@ -1,10 +1,12 @@
 
 .login__container {
-  width: 80%;
-  margin: 0 auto;
+  width: 70%;
+  margin: 60px auto;
+  background: white;
 
   .login__container__title {
     text-align: center;
+    padding: 24px;
   }
 
   .login__container__form {
@@ -12,13 +14,38 @@
     text-align: center;
 
     .login__container__form__list {
-      width: 50%;
-      background: red;
+      width: 60%;
       margin: 20px auto;
 
       .login__container__form__list-item {
+        margin: 30px;
+
+        label {
+          display: inline-block;
+          width: 100px;
+          text-align: left;
+        }
+        .required-errmsg {
+          width: fit-content;
+          margin-left: 40%;
+          padding: 10px 0;
+          color: red;
+          font-weight: bold;
+          font-size: 0.9rem;
+        }
       }
     }
+
+    .failure-msg {
+      color: red;
+      font-weight: bold;
+    }
+  }
+
+  .login__container__signup {
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px;
   }
 
 }

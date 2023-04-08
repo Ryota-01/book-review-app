@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from './Header';
 import { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { signIn } from '../userSlice'
@@ -13,7 +13,7 @@ import '../css/Login.scss';
 
 
 function Login() {
-  const user = useSelector((state) => state.user.isSignIn)
+  // const user = useSelector((state) => state.user.isSignIn)
   const dispatch = useDispatch();
   const navigate = useNavigate('')
   const {register, handleSubmit, formState: { errors }} = useForm()
@@ -44,7 +44,7 @@ function Login() {
             <li className='login__container__form__list-item'>
               <label htmlFor="e-mail">e-mail</label>
               <input
-                className='email-area'
+                className='login__container__form__list-item__email'
                 {...register('email', {required: '*メールアドレスを入力してください'})}
                 type="email"
               />
@@ -54,7 +54,7 @@ function Login() {
             <li className='login__container__form__list-item'>
               <label htmlFor="password">パスワード</label>
               <input
-                className='password-area'
+                className='login__container__form__list-item__password'
                 {...register('password', {
                   required: {
                     value: true,

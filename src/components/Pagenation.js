@@ -3,7 +3,6 @@ import { useState } from 'react';
 import BookList from './BookList';
 import axios from 'axios';
 import { useCookies } from "react-cookie";
-import { url } from "../Url";
 import '../css/Pagenation.scss'
 
 function Pagenation(props) {
@@ -18,14 +17,7 @@ function Pagenation(props) {
   const [cookies] = useCookies();
   const [nextList, setNextList] = useState([]);
 
-  // const [itemsOffset, setItemsOffset] = useState(0);
-  // const [disabled, setDisabled] = useState(true)
-  // const itemsPerPage = 10;                                //画面上に表示する書籍の数
-  // const endOffset = itemsOffset + itemsPerPage;           //画面上に表示している書籍の末尾の要素数
-  // const currentBookLists = props.currentBooksList.slice(itemsOffset, endOffset)
-  // const pageCount = Math.ceil(currentBooksList.length / itemsPerPage);
-
-  const backBtnClick = () => {
+  const backBtnClick = () => {                            //BACKボタンを押した時の処理（前の10件を表示）
     axios.get(apiUrl + (offset - 20), {
       'Authorization': `Bearer ${cookies.token}`,
     })
@@ -39,7 +31,7 @@ function Pagenation(props) {
     })
   }
 
-  const nextBtnClick = () => {
+  const nextBtnClick = () => {                            //NEXTボタンを押した時の処理（次の10件を表示）
     axios.get(apiUrl + offset, {
       'Authorization': `Bearer ${cookies.token}`,
     })

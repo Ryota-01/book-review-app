@@ -1,7 +1,6 @@
 import React from 'react'
-import { Navigate, useNavigate } from 'react-router'
+import { Navigate } from 'react-router'
 import { useSelector } from 'react-redux'
-import Home from './Home'
 
 function PrivateRoute(props) {
   const { children } = props;
