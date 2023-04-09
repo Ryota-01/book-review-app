@@ -19,7 +19,9 @@ function Pagenation(props) {
 
   const backBtnClick = () => {                            //BACKボタンを押した時の処理（前の10件を表示）
     axios.get(apiUrl + (offset - 20), {
-      'Authorization': `Bearer ${cookies.token}`,
+      headers : {
+        'Authorization': `Bearer ${cookies.token}`,
+      }
     })
     .then((res) => {
       setCurrentBooksList(res.data)
@@ -32,7 +34,9 @@ function Pagenation(props) {
 
   const nextBtnClick = () => {                            //NEXTボタンを押した時の処理（次の10件を表示）
     axios.get(apiUrl + offset, {
-      'Authorization': `Bearer ${cookies.token}`,
+      headers : {
+        'Authorization': `Bearer ${cookies.token}`,
+      }
     })
     .then((res) => {
       setCurrentBooksList(res.data)

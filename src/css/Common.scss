@@ -1,12 +1,14 @@
 
 $baseColor :#008080;
 
-body {
-  background: lightgray;
-}
 
 h1 {
   margin: 0;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
 }
 
 ul {
@@ -81,3 +83,17 @@ a {
   font-weight: bold;
   margin-top: 40px;
 }
+
+@mixin loginAndLogputBtn($bgColor) {
+  border: none;
+  color: white;
+  background:  $bgColor;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  height: 50px;
+  margin: 25px;
+}
+

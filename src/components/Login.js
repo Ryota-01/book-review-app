@@ -39,6 +39,9 @@ function Login() {
         <h2 className='login__container__title'>ログイン</h2>
 
         <form className='login__container__form' onSubmit={handleSubmit(onSubmit)}>
+          <p>Book Review App会員の方</p>
+          <p>ID（e-mail）とパスワードを入力してください</p>
+          
           <ul className='login__container__form__list'>
             <li className='login__container__form__list-item'>
               <label htmlFor="e-mail">e-mail</label>
@@ -70,7 +73,7 @@ function Login() {
             </li>
           </ul>
           <p className='failure-msg'>{errorMessage}</p>
-          <p><button className='login__container__login-btn'>ログイン</button></p>
+          <button className='login__container__login-btn'>ログイン</button>
         </form>
 
         <p className='login__container__signup'>

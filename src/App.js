@@ -29,9 +29,8 @@ function App() {
         <Route 
           exact path="/home"
           element={
-            <PrivateRoute user={user}>
-              <Home />
-            </PrivateRoute>}
+            <Home />
+          }
         />
 
         <Route 
@@ -43,7 +42,7 @@ function App() {
         />
 
         <Route 
-          exact path="/postreview"
+          exact path="/new"
           element={
             <PrivateRoute user={user}>
               <PostReview />

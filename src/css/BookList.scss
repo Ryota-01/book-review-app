@@ -1,28 +1,53 @@
 
 
 .booklists {
+  width: 92%;
+  margin: 50px auto;
+
+  .booklists__title {
+    background: #BDBEC2;
+    color: white;
+    padding: 10px 10px;
+  }
 
   .booklists__wrapper {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
 
     .booklists__wrapper__list {
-      width: 31%;
-      height: 240px;
-      background: white;
-      margin-bottom: 30px;
-      border-radius: 6px;
-      filter: drop-shadow(0 3px 2px gray);
-      border-top: 6px solid gray;
+      width: 100%;
+      border-bottom: 2px solid lightgray;
+      padding: 30px 0;
+      margin-bottom: 40px;
 
-      .booklists__wrapper__list-item {
-        text-align: center;
-        padding: 12px;
+      .booklists__wrapper__list-photo {
+        width: 180px;
+        height: 200px;
+        background: lightgray;
+        color: white;
         font-weight: bold;
-        font-size: 1.1rem;
+        text-align: center;
+        line-height: 200px;
+        font-size: 1.2rem;
+        float: left;
+        margin-right: 30px;
       }
+
+      .booklists__wrapper__list-item__title {
+        font-size: 1.2rem;
+      }
+
+      .booklists__wrapper__list-item__reviewer {
+        font-size: 0.9rem;
+        margin-top: 10px;
+        color:  gray;
+        font-weight: bold;
+      }
+
+      .booklists__wrapper__list-item__detail {
+        font-size: 0.9rem;
+        margin-top: 10px;
+      }
+
 
     }
   }

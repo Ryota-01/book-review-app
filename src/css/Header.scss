@@ -1,6 +1,6 @@
 @use "Common";
 
-$baseColor :#008080;
+$baseColor :#f3f1e4;
 
 header {
   width: 100%;
@@ -12,26 +12,45 @@ header {
     justify-content: space-between;
 
     .header__wrapper__heading {
-      color: white;
+      color: skyblue;
       padding: 30px;
     }
 
-    .header__wrapper__logout-login-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-weight: bold;
-      padding: 20px;
-      font-size: 1rem;
-      cursor: pointer;
+    .header__wrapper__right {
+      display: flex;
+
+      .header__wrapper__right__user-info {
+        padding: 15px 0;
+        width: 170px;
+      }
+
+        .header__user-name {
+          text-align: center;
+          font-size: 0.8rem;
+        }
     }
+
+    .header__wrapper__logout-login-btn {
+      @include Common.loginAndLogputBtn(#0085cd);
+    }
+
+    .header__wrapper__logout-login-btn:hover {
+      opacity: 0.6;
+      transition: 0.3s;
+    }
+    
   }
 
   .header__user-name {
-    text-align: right;
-    color: white;
+    color: black;
     font-weight: bold;
-    padding: 10px 20px;
+
+    .user-icon {
+      margin: 0 auto;
+      display: block;
+      width: 15%;
+      text-align: center;
+    }
   }
 
 }
