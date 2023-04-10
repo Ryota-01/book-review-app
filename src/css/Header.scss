@@ -20,16 +20,24 @@ header {
 
       .header__wrapper__right__user-info {
         padding: 15px 0;
-        width: 170px;
-      }
+        margin-right: 16px;
+        width: fit-content;
+
+        .user-icon {
+          width: 30px;
+        }
 
         .header__user-name {
           text-align: center;
           font-size: 0.8rem;
         }
+
         .header__user-name p {
           padding-top: 5px;
         }
+
+      }
+
 
       }
 

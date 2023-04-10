@@ -17,8 +17,6 @@ function UserEdit() {
     return navigate('/home');
   }
 
-
-
   axios.get(`${url}/users`, {
     headers : {
       'Authorization': `Bearer ${cookies.token}`

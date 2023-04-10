@@ -21,7 +21,6 @@ function Home() {
     if(!user) {
       axios.get('https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/public/books?offset=')
       .then((res) => {
-        console.log(res)
         setCurrentBooksList(res.data)                     //取得した書籍一覧をセット
         setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
         setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
@@ -36,7 +35,6 @@ function Home() {
         }
       })
       .then((res) => {
-        console.log(res)
         setCurrentBooksList(res.data)                     //取得した書籍一覧をセット
         setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
         setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット

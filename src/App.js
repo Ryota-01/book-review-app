@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import BookList from './components/BookList';
 
 function App() {
 
@@ -28,14 +29,14 @@ function App() {
         />
 
         <Route 
-          exact path="/home"
+          path="/home"
           element={
             <Home />
           }
         />
 
         <Route 
-          exact path="/useredit"
+          path="/useredit"
           element={
             <PrivateRoute user={user}>
               <UserEdit />
@@ -43,7 +44,7 @@ function App() {
         />
 
         <Route 
-          exact path="/new"
+          path="/new"
           element={
             <PrivateRoute user={user}>
               <PostReview />
@@ -51,7 +52,7 @@ function App() {
         />
 
         <Route 
-          exact path="/review"
+          path="/review/:id"
           element={
             <PrivateRoute user={user}>
               <Review />
@@ -59,7 +60,7 @@ function App() {
         />
 
         <Route
-          exact path="/login"
+          path="/login"
           element={
             <PublicRoute user={user}>
               <Login />
@@ -67,7 +68,7 @@ function App() {
         />
 
         <Route 
-          exact path="/signup"
+          path="/signup"
           element={
             <PublicRoute user={user}>
               <Signup />
