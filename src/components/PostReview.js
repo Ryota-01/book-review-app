@@ -11,10 +11,7 @@ function PostReview() {
   const {register, handleSubmit, formState: { errors }} = useForm('')
   const [cookies, setCookie ] = useCookies()
   const navigate = useNavigate('')
-
-
   const onPostReview = (e) => {
-
     const data = {
       title : e.title,
       url : e.url,
@@ -33,8 +30,7 @@ function PostReview() {
     })
     .catch((err) => {
       console.log(err)
-    })
-  
+    })  
   }
 
   return (

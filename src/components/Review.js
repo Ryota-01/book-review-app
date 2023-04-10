@@ -1,10 +1,8 @@
 import React from 'react'
-import { useParams } from 'react-router'
 import { useLocation } from 'react-router'
 import Header from './Header'
 
 function Review() {
-  const params = useParams('')
   const location = useLocation('')
   const bookInfo = location.state;
   console.log(bookInfo)

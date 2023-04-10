@@ -3,11 +3,10 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useCookies } from "react-cookie";
 import { url } from "../Url";
-import { Link } from 'react-router-dom';
 import Header from './Header';
 import Pagenation from './Pagenation';
 import '../css/Home.scss';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Home() {
   const user = useSelector((state) => state.user.isSignIn)
@@ -15,13 +14,13 @@ function Home() {
   const [apiUrl, setApiUrl] = useState('');                            //取得したAPIを格納する変数
   const [cookies] = useCookies();
   const [offset, setOffSet] = useState(0)                             //offset値を格納
-  const baseUrl = `${url}books?offset=`;                       //baseURLを設定
+  const baseUrl = `${url}books?offset=`;                              //baseURLを設定
 
   useEffect(() => {                                                   //書籍一覧APIを取得
     if(!user) {
       axios.get('https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/public/books?offset=')
       .then((res) => {
-        setCurrentBooksList(res.data)                     //取得した書籍一覧をセット
+        setCurrentBooksList(res.data)                     //最初に取得した書籍一覧をセット
         setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
         setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
       })

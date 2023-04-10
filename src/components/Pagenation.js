@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react';
 import BookList from './BookList';
 import axios from 'axios';
 import { useCookies } from "react-cookie";
@@ -15,7 +14,6 @@ function Pagenation(props) {
   } = props;
 
   const [cookies] = useCookies();
-  // const [nextList, setNextList] = useState([]);
 
   const backBtnClick = () => {                            //BACKボタンを押した時の処理（前の10件を表示）
     axios.get(apiUrl + (offset - 20), {

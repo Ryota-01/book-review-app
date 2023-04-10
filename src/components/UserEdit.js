@@ -13,6 +13,7 @@ function UserEdit() {
   const [currentUserName, setCurrentUserName] = useState('')
   const {register, handleSubmit, formState: { errors }} = useForm('')
   const navigate = useNavigate('')
+
   const back = (e) => {
     return navigate('/home');
   }
@@ -34,7 +35,6 @@ function UserEdit() {
     const data = {
       name: e.name
     }  
-
     axios.put(`${url}/users`, data, {
       headers : {
         'Authorization': `Bearer ${cookies.token}`
