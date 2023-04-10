@@ -26,6 +26,10 @@ function Header() {
     navigate('/login');
   }
 
+  const signup = () => {
+    navigate('/signup')
+  }
+
   axios.get(`${url}users`, {
     headers : {
       'Authorization': `Bearer ${cookies.token}`
@@ -51,16 +55,26 @@ function Header() {
 
             <div className='header__wrapper__right__user-info'>
               {user ?
-                <p className='header__user-name'>
+                <div className='header__user-name'>
                   <img className='user-icon' src={userIcon} />
-                   こんにちは、{userName} さん
-                </p> : <></>
+                  <p>ようこそ、{userName} さん</p>
+                </div> : <></>
               }
               {user ?
                 <p className='header__user-name'><Link to='/useredit'>ユーザー情報を編集</Link></p> : <></>
               }
             </div>
 
+            {user ? 
+              <></> : 
+              <button
+                className='header__wrapper__signup-btn'
+                onClick={signup}
+              >
+                新規会員登録
+              </button>
+            }
+            
             {user ? 
               <button
                 className='header__wrapper__logout-login-btn'

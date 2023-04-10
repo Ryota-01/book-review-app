@@ -61,15 +61,19 @@ function Signup() {
   return (
     <div className='signup'>
       <Header />
-      <div className='signup__wrapper'>
-        <p className='signup__wrapper__title'>新規登録</p>
+      <div className='signup__container'>
+        <h2 className='signup__container__title'>新規登録</h2>
 
-        <form className='signup__wrapper__form' onSubmit={handleSubmit(onSubmit)}>
-          <ul className='signup__wrapper__form__list'>
-            <li className='signup__wrapper__form__list-item'>
+        <form className='signup__container__form' onSubmit={handleSubmit(onSubmit)}>
+          
+          <p>会員登録をされていない方</p>
+          <p>下記より会員登録を行なってください</p>
+
+          <ul className='signup__container__form__list'>
+            <li className='signup__container__form__list-item'>
               <label>お名前</label>
               <input
-                className='signup__wrapper__form__list-item__name'
+                className='signup__container__form__list-item__name'
                 {...register('name', {required: '*お名前は入力必須項目です' })}
                 type="text"
                 placeholder="必須"
@@ -78,10 +82,10 @@ function Signup() {
               <br />
             </li>
 
-            <li className='signup__wrapper__form__list-item'>
+            <li className='signup__container__form__list-item'>
               <label>e-mail</label>
               <input
-                className='signup__wrapper__form__list-item__email'
+                className='signup__container__form__list-item__email'
                 {...register('email', {required: '*e-mailは入力必須項目です' })}
                 type="email"
                 placeholder="example@email.jp"
@@ -90,10 +94,10 @@ function Signup() {
               <br />
             </li>
 
-            <li className='signup__wrapper__form__list-item'>
+            <li className='signup__container__form__list-item'>
               <label>パスワード</label>
               <input
-                className='signup__wrapper__form__list-item__password'
+                className='signup__container__form__list-item__password'
                 {...register('password', {
                   required: {
                     value: true,
@@ -111,10 +115,10 @@ function Signup() {
               <br />
             </li>
 
-            <li className='signup__wrapper__form__list-item'>
+            <li className='signup__container__form__list-item'>
               <label>アイコン画像(png,jpg)</label>
               <input
-                className='signup__wrapper__form__list-item__file'
+                className='signup__container__form__list-item__file'
                 {...register('file', {required: '*アイコン画像をアップロードしてください' })}
                 type="file"
                 accept="image/*, .png, .jpg"
@@ -122,7 +126,7 @@ function Signup() {
                 {errors.file?.message && <p className='required-errmsg'>{errors.file.message}</p>}
             </li>
             <p className='failure-msg'>{errorMessage}</p>
-            <p><button className='send-btn'>アカウント作成</button></p>
+            <p><button className='signup__container__signup-btn'>新規会員登録</button></p>
           </ul>
         </form>
         <p className='go-to-login'>

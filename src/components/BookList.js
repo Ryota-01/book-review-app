@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/BookList.scss';
 import { Link } from 'react-router-dom';
+import userIcon from '../img/user-solid.svg';
 
 function BookList(props) {
 
@@ -15,24 +16,26 @@ function BookList(props) {
         随時レビュー更新中です。</p>
         <Link to='/new'><button>レビューを投稿する</button></Link>
         
-        <div className='booklists__wrapper'>
           {currentBooksList.map((book) => {                  //書籍一覧の配列の中身を、mapで展開
             return(
-              <ul className='booklists__wrapper__list' key={book.id}>
-                <li className='booklists__wrapper__list-photo'>PHOTO</li>
-                <li className='booklists__wrapper__list-item__title'>
-                  <Link to=''><h3>{book.title}</h3> </Link>
-                </li>
-                <li className='booklists__wrapper__list-item__reviewer'>
-                  投稿者：{book.reviewer} 
-                </li>
-                <li className='booklists__wrapper__list-item__detail'>
-                  {book.detail} 
-                </li>
-              </ul>
+              <div className='booklists__wrapper'>
+                <div className='booklists__wrapper__book-photo'>IMAGE</div>
+                <ul className='booklists__wrapper__list' key={book.id}>
+                  <li className='booklists__wrapper__list-item__title'>
+                    <Link to='/review'><h3>{book.title}</h3> </Link>
+                  </li>
+                  <li className='booklists__wrapper__list-item__reviewer'>
+                    <img className='user-icon' src={userIcon} />
+                    <p>投稿者：{book.reviewer} </p>
+                  </li>
+                  <li className='booklists__wrapper__list-item__detail'>
+                    {book.detail} 
+                  </li>
+                  <li className='clear'></li>
+                </ul>
+              </div>
             )
           })}
-        </div>
       </section>
     </>
   )

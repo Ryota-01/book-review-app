@@ -6,7 +6,6 @@ header {
   width: 100%;
   background: $baseColor;
 
-
   .header__wrapper {
     display: flex;
     justify-content: space-between;
@@ -28,15 +27,28 @@ header {
           text-align: center;
           font-size: 0.8rem;
         }
+        .header__user-name p {
+          padding-top: 5px;
+        }
+
+      }
+
+    .header__wrapper__signup-btn {
+      @include Common.navigateBtn(#f25371);
+      margin-right: 5px;
+    }
+
+    .header__wrapper__signup-btn:hover {
+      @include Common.hover;
     }
 
     .header__wrapper__logout-login-btn {
-      @include Common.loginAndLogputBtn(#0085cd);
+      @include Common.navigateBtn(#0085cd);
+      margin-left: 5px;
     }
 
     .header__wrapper__logout-login-btn:hover {
-      opacity: 0.6;
-      transition: 0.3s;
+      @include Common.hover;
     }
     
   }

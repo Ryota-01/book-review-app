@@ -8,7 +8,6 @@ function PrivateRoute(props) {
   const user = useSelector((state) => state.user.isSignIn)
 
   if(!user) {
-    alert('ログインしてください')
     return <Navigate to='/login' />;
   }
 

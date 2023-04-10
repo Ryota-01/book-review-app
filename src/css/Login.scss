@@ -5,9 +5,7 @@
   margin: 60px auto;
 
   .login__container__form {
-    max-width: 100%;
-    background: #f3f1e4;
-    padding: 55px 40px;
+    @include Common.formWrapper();
 
     .login__container__form, p:nth-child(1) {
       padding: 12px 0;
@@ -20,6 +18,7 @@
 
       .login__container__form__list-item {
         height: 90px;
+        margin-top: 24px;
 
         label {
           display: inline-block;
@@ -34,12 +33,7 @@
         }
 
         .required-errmsg {
-          width: fit-content;
-          margin-left: 25%;
-          padding: 10px 0;
-          color: red;
-          font-weight: bold;
-          font-size: 0.9rem;
+          @include Common.RequiredErrmsg();
         }
       }
     }
@@ -50,9 +44,14 @@
     }
 
     .login__container__login-btn {
-      @include Common.loginAndLogputBtn(#0085cd);
-      margin: 0 auto;
+      @include Common.navigateBtn(#0085cd);
+      margin: 25px auto 0 auto;
     }
+
+    .login__container__login-btn:hover {
+      @include Common.hover;
+    }
+    
   }
 
   .login__container__signup {

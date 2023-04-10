@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { url } from "../Url";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
+import '../css/PostReview.scss';
 
 function PostReview() {
   const {register, handleSubmit, formState: { errors }} = useForm('')
@@ -13,8 +14,7 @@ function PostReview() {
 
 
   const onPostReview = (e) => {
-    console.log(e)
-    console.log(register)
+
     const data = {
       title : e.title,
       url : e.url,
@@ -25,8 +25,7 @@ function PostReview() {
     axios.post(`${url}/books`, data, {
       headers : {
         'Authorization': `Bearer ${cookies.token}`
-      },
-
+      }
     })
     .then((res) => {
       console.log(res)
@@ -38,34 +37,69 @@ function PostReview() {
   
   }
 
-
-
   return (
-    <div>
+    <div className='post-review'>
       <Header />
-      <form onSubmit={handleSubmit(onPostReview)}>
-        <label>書籍タイトル</label>
-        <input
-          {...register('title', {required: '*書籍タイトルを入力してください' })}
-          type="text"
-        />
-        <label>URL</label>
-        <input 
-          {...register('url')}
-          type="text"
-        />
-        <label>詳細</label>
-        <input
-          {...register('detail', {required: '*詳細を入力してください' })}
-          type="text"
-        />
-        <label>レビュー</label>
-        <input
-          {...register('review', {required: '*レビューを入力してください' })}
-          type="text"
-        />
-        <button>投稿する</button>
-      </form>
+      <div className='post-review__container'>
+        <h2 className='post-review__container__title'>レビューを投稿する</h2>
+
+        <form className='post-review__container__form' onSubmit={handleSubmit(onPostReview)}>
+
+          <ul className='post-review__container__form__list'>
+
+            <li className='post-review__container__form__list-item'>
+              <label for='title'>
+                <p>書籍タイトル *</p>
+                <input
+                  id='title'
+                  {...register('title', {required: '*書籍タイトルを入力してください' })}
+                  type="text"
+                />
+              </label>
+              {errors.title?.message && <p className='required-errmsg'>{errors.title.message}</p>}                
+            </li>
+
+            <li className='post-review__container__form__list-item'>
+              <label for='url'>
+                <p>URL</p>
+                <input 
+                  id='url'
+                  {...register('url')}
+                  type="text"
+                />
+              </label>
+            </li>
+
+            <li className='post-review__container__form__list-item'>
+              <label for='detail'>
+                <p>詳細 *</p>
+                <textarea
+                  id='detail'
+                  rows='3'
+                  {...register('detail', {required: '*詳細を入力してください' })}
+                  type="text"
+                />                
+                </label>
+              {errors.detail?.message && <p className='required-errmsg'>{errors.detail.message}</p>}
+            </li>
+
+            <li className='post-review__container__form__list-item'>
+              <label for='review'>
+                <p>レビュー *</p>
+                <textarea
+                  id='review'
+                  rows='6'
+                  {...register('review', {required: '*レビューを入力してください' })}
+                  type="text"
+                />
+              </label>
+              {errors.review?.message && <p className='required-errmsg'>{errors.review.message}</p>}
+            </li>
+          </ul>
+          <button className='post-review__container__form__post-btn'>投稿する</button>
+        </form>
+      </div>
+
     </div>
   )
 }
