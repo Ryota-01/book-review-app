@@ -16,6 +16,7 @@ function Header() {
   const [userName, setUserName] = useState('')
   const [cookies, setCookie, removeCookie] = useCookies('')
 
+  
   axios.get(`${url}users`, {
     headers : {
       'Authorization': `Bearer ${cookies.token}`

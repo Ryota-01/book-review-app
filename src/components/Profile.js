@@ -13,6 +13,7 @@ function UserEdit() {
   const [currentUserName, setCurrentUserName] = useState('')
   const {register, handleSubmit, formState: { errors }} = useForm('')
   const navigate = useNavigate('')
+
   const back = (e) => {
     return navigate('/home');
   }
@@ -31,21 +32,23 @@ function UserEdit() {
 
 
   const onUpdata = (e) => {
-    const data = {
-      name: e.name
-    }  
-    axios.put(`${url}/users`, data, {
-      headers : {
-        'Authorization': `Bearer ${cookies.token}`
-      },
-    })
-    .then((res) => {
-      alert('ユーザー名を更新しますか？')
-      navigate('/home')
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    if(window.confirm('ユーザー名を更新しますか？')) {
+
+      const data = {
+        name: e.name
+      }
+      axios.put(`${url}/users`, data, {
+        headers : {
+          'Authorization': `Bearer ${cookies.token}`
+        },
+      })
+      .then((res) => {
+        navigate('/home')
+      })
+      .catch((err) => {
+        console.log(err)
+      })  
+    }
   }
 
   return (
@@ -69,10 +72,10 @@ function UserEdit() {
           />
           {errors.name?.message && <p className='required-errmsg'>{errors.name.message}</p>}
           <div>
-            <button className='profile__container__form__updata-btn' onClick={onUpdata}>更　新</button>
-            <button className='profile__container__form__back-btn' onClick={back}>ホームに戻る</button>
+            <input type='submit' value='更新' />
           </div>
         </form>
+        <button className='profile__container__form__back-btn' onClick={back}>ホームに戻る</button>
       </div>
     </div>
   )
