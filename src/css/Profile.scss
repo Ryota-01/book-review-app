@@ -1,20 +1,20 @@
 @use 'Common';
 
-.user-edit__container {
-  @include Common.container();
+.profile__container {
+  @include Common.container(80%);
 
-  .user-edit__container__form {
+  .profile__container__form {
     @include Common.formWrapper();
 
-    .user-edit__container__form__current-user-name {
+    .profile__container__form__current-user-name {
       margin-bottom: 40px;
     }
 
-    .user-edit__container__form__new-user-name {
+    .profile__container__form__new-user-name {
       width: 70%;
       height: 30px;
       padding: 10px;
-}
+    }
 
     label {
       @include Common.label();
@@ -24,21 +24,21 @@
       @include Common.RequiredErrmsg();
     }
 
-    .user-edit__container__form__updata-btn {
+    .profile__container__form__updata-btn {
       @include Common.navigateBtn(tomato);
       margin: 25px auto;
     }
 
-    .user-edit__container__form__updata-btn:hover {
+    .profile__container__form__updata-btn:hover {
       @include Common.hover;
     }
 
-    .user-edit__container__form__back-btn {
+    .profile__container__form__back-btn {
       @include Common.navigateBtn(skyblue);
       margin: 25px 12px;
     }
 
-    .user-edit__container__form__back-btn:hover {
+    .profile__container__form__back-btn:hover {
       @include Common.hover;
     }
 

@@ -1,7 +1,7 @@
 @use 'Common';
 
 .signup__container {
-  @include Common.container();
+  @include Common.container(80%);
 
   .signup__container__form {
     @include Common.formWrapper();

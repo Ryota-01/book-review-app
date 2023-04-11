@@ -6,7 +6,7 @@ import { url } from "../Url";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import Header from './Header';
-import '../css/UserEdit.scss';
+import '../css/Profile.scss';
 
 function UserEdit() {
   const [cookies] = useCookies();
@@ -50,27 +50,29 @@ function UserEdit() {
   }
 
   return (
-    <div className='user-edit'>
+    <div className='profile'>
       <Header/>
-      <div className='user-edit__container'>
-        <h2 className='user-edit__container__title'>ユーザー情報編集</h2>
+      <div className='profile__container'>
+        <h2 className='profile__container__title'>ユーザー情報編集</h2>
   
-        <form className='user-edit__container__form' onSubmit={handleSubmit(onUpdata)}>
-          <div className='user-edit__container__form__current-user-name'>
+        <form className='profile__container__form' onSubmit={handleSubmit(onUpdata)}>
+          <div className='profile__container__form__current-user-name'>
             <label>現在のユーザー名</label>
             <label>{currentUserName}</label>
           </div>
 
           <label>新しいユーザー名</label>
           <input
-          className='user-edit__container__form__new-user-name'
+          className='profile__container__form__new-user-name'
             {...register('name', {required: '*新しいユーザ名を入力して下さい' })}
             type="text"
             placeholder="新しいユーザー名"
           />
           {errors.name?.message && <p className='required-errmsg'>{errors.name.message}</p>}
-          <button className='user-edit__container__form__updata-btn' onClick={onUpdata}>更　新</button>
-          <button className='user-edit__container__form__back-btn' onClick={back}>ホームに戻る</button>
+          <div>
+            <button className='profile__container__form__updata-btn' onClick={onUpdata}>更　新</button>
+            <button className='profile__container__form__back-btn' onClick={back}>ホームに戻る</button>
+          </div>
         </form>
       </div>
     </div>

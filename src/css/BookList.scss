@@ -1,8 +1,12 @@
-
+@use 'Common';
 
 .booklists {
   width: 92%;
   margin: 50px auto;
+
+  .booklists__description {
+    padding: 30px 0;
+  }
 
   .booklists__title {
     background: #BDBEC2;
@@ -17,16 +21,8 @@
     margin-top: 20px;
     padding: 40px 0;
 
-    .booklists__wrapper__book-photo {
-      width: 25%;
-      height: 220px;
-      background: lightgray;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      line-height: 220px;
-      font-size: 1.2rem;
-      margin-right: 30px;
+    .booklists__wrapper__book-image {
+      @include Common.image(220px);
     }
 
     .booklists__wrapper__list {

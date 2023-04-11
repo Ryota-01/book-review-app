@@ -11,7 +11,7 @@ function BookList(props) {
   <>
     <section className='booklists'>
       <h2 className='booklists__title'>書籍一覧</h2>
-      <p>Book Review Appに投稿された本、雑誌、電子書籍の一覧ページです。
+      <p className='booklists__description'>Book Review Appに投稿された本、雑誌、電子書籍の一覧ページです。
       随時レビュー更新中です。</p>
   
       <Link to='/new'><button>レビューを投稿する</button></Link>
@@ -19,7 +19,7 @@ function BookList(props) {
       {currentBooksList.map((book) => {                            //書籍一覧の配列の中身を、mapで展開
         return(
           <div className='booklists__wrapper' key={book.id}>
-            <div className='booklists__wrapper__book-photo'>IMAGE</div>
+            <div className='booklists__wrapper__book-image'>IMAGE</div>
             <ul className='booklists__wrapper__list'>
               <li className='booklists__wrapper__list-item__title'>
                 <Link to= {{pathname: `/review/${book.id}`, query: book}} state={book}>

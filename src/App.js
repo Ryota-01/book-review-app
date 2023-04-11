@@ -3,8 +3,8 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from './components/Home';
-import UserEdit from './components/UserEdit';
-import PostReview from './components/PostReview';
+import Profile from './components/Profile';
+import New from './components/New';
 import Review from './components/Review';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -35,10 +35,10 @@ function App() {
         />
 
         <Route 
-          path="/useredit"
+          path="/profile"
           element={
             <PrivateRoute user={user}>
-              <UserEdit />
+              <Profile />
             </PrivateRoute>}
         />
 
@@ -46,7 +46,7 @@ function App() {
           path="/new"
           element={
             <PrivateRoute user={user}>
-              <PostReview />
+              <New />
             </PrivateRoute>}
         />
 

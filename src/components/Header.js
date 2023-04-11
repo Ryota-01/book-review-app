@@ -18,8 +18,8 @@ function Header() {
 
   const logout = () => {
     dispatch(signOut())
-    removeCookie('token')
     navigate('/login')
+    removeCookie('token')
   }
 
   const login = () => {
@@ -61,7 +61,7 @@ function Header() {
                 </div> : <></>
               }
               {user ?
-                <p className='header__user-name'><Link to='/useredit'>ユーザー情報を編集</Link></p> : <></>
+                <p className='header__user-name'><Link to='/profile'>ユーザー情報を編集</Link></p> : <></>
               }
             </div>
 

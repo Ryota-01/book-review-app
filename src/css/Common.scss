@@ -1,5 +1,6 @@
 
 h1,
+h2,
 h3,
 p,
 ul,
@@ -9,13 +10,17 @@ li {
   list-style: none;
 }
 
+h2 {
+  padding: 30px 0;
+}
+
 a {
   text-decoration: none;
   display: inline-block;
 }
 
-@mixin container() {
-  width: 80%;
+@mixin container($width) {
+  width: $width;
   margin: 60px auto;
 }
 
@@ -30,12 +35,12 @@ a {
   color: white;
   background:  $bgColor;
   font-weight: bold;
-  font-size: 0.9rem;
-  padding: 12px;
+  font-size: 0.7rem;
   border-radius: 6px;
-  cursor: pointer;
-  height: 50px;
+  padding: 0 14px;
+  height: 40px;
   margin: 25px;
+  cursor: pointer;
 }
 
 @mixin hover() {
@@ -56,4 +61,17 @@ a {
   color: red;
   font-weight: bold;
   font-size: 0.9rem;
+}
+
+@mixin image($height) {
+  width: 25%;
+  height: $height;
+  background: lightgray;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: $height;
+  font-size: 1.2rem;
+  margin-right: 30px;
+
 }

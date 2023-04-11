@@ -2,7 +2,7 @@
 
 
 .post-review__container {
-  @include Common.container();
+  @include Common.container(80%);
 
   .post-review__container__form {
     @include Common.formWrapper();

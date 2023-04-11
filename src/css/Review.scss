@@ -1,0 +1,37 @@
+@use 'Common';
+
+.review__container {
+  @include Common.container(90%);
+
+  .review__container__book-info {
+    display: flex;
+    justify-content: space-between;
+
+    .review__container__book-info__image {
+      @include Common.image(400px);
+      width: 500px;
+    }
+    
+    .review__container__book-info__list {
+      width: 58%;
+
+      .review__container__book-info__list__title {
+        font-size: 1.1rem;
+
+      }
+
+      .review__container__book-info__list__reviewer {
+        font-size: 0.9rem;
+        margin-top: 20px;
+      }
+
+      .review__container__book-info__list__detail {
+        font-size: 0.9rem;
+        margin-top: 20px;
+      }
+      
+    }
+  
+  }
+
+}
