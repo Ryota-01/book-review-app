@@ -16,20 +16,6 @@ function Header() {
   const [userName, setUserName] = useState('')
   const [cookies, setCookie, removeCookie] = useCookies('')
 
-  const logout = () => {
-    dispatch(signOut())
-    navigate('/login')
-    removeCookie('token')
-  }
-
-  const login = () => {
-    navigate('/login');
-  }
-
-  const signup = () => {
-    navigate('/signup')
-  }
-
   axios.get(`${url}users`, {
     headers : {
       'Authorization': `Bearer ${cookies.token}`
@@ -41,6 +27,22 @@ function Header() {
   .catch((err) => {
     console.log(err)
   })
+
+  //ログアウト処理
+  const logout = () => {
+    dispatch(signOut())
+    navigate('/login')
+    removeCookie('token')
+  }
+
+  //ログイン
+  const login = () => {
+    navigate('/login');
+  }
+
+  const signup = () => {
+    navigate('/signup')
+  }
   
   return (
     <>

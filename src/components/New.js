@@ -11,6 +11,8 @@ function PostReview() {
   const {register, handleSubmit, formState: { errors }} = useForm('')
   const [cookies, setCookie ] = useCookies()
   const navigate = useNavigate('')
+
+  ///「投稿」ボタンを押した時の処理
   const onPostReview = (e) => {
     const data = {
       title : e.title,
@@ -25,7 +27,7 @@ function PostReview() {
       }
     })
     .then((res) => {
-      console.log(res)
+      //投稿と同時にHomeページに遷移させる
       navigate('/home')
     })
     .catch((err) => {

@@ -13,7 +13,6 @@ function UserEdit() {
   const [currentUserName, setCurrentUserName] = useState('')
   const {register, handleSubmit, formState: { errors }} = useForm('')
   const navigate = useNavigate('')
-
   const back = (e) => {
     return navigate('/home');
   }
