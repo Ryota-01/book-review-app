@@ -14,41 +14,69 @@ function Home() {
   const [apiUrl, setApiUrl] = useState('');                            //取得したAPIを格納する変数
   const [cookies] = useCookies();
   const [offset, setOffSet] = useState(0)                             //offset値を格納
-  const baseUrl = `${url}books?offset=`;                              //baseURLを設定
+  const axiosInstance = axios.create({
+    baseURL : `${url}`,
+    headers : {
+      'Authorization': `Bearer ${cookies.token}`
+    }
+  })
 
-  useEffect(() => {                                                   //書籍一覧APIを取得
+  useEffect(() => {
     if(!user) {
-      axios.get('https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/public/books?offset=')
+      axiosInstance.get('public/books?offset=')
       .then((res) => {
         setCurrentBooksList(res.data)                     //最初に取得した書籍一覧をセット
-        setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
         setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
       })
       .catch((err) => {
         console.log(err)
       })
     } else {
-      axios.get(baseUrl, {
-        headers : {
-          'Authorization': `Bearer ${cookies.token}`,
-        }
-      })
+      axiosInstance.get('/books?offset=')
       .then((res) => {
-        setCurrentBooksList(res.data)                     //取得した書籍一覧をセット
-        setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
+        setCurrentBooksList(res.data)                     //最初に取得した書籍一覧をセット
         setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
       })
       .catch((err) => {
         console.log(err)
       })
-    }
-  }, []);
+    }  
+  }, [])
+
+  // useEffect(() => {                                                   //書籍一覧APIを取得
+  //   if(!user) {
+  //     axios.get('https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/public/books?offset=')
+  //     .then((res) => {
+  //       setCurrentBooksList(res.data)                     //最初に取得した書籍一覧をセット
+  //       setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
+  //       setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  //   } else {
+  //     axios.get(baseUrl, {
+  //       headers : {
+  //         'Authorization': `Bearer ${cookies.token}`,
+  //       }
+  //     })
+  //     .then((res) => {
+  //       setCurrentBooksList(res.data)                     //取得した書籍一覧をセット
+  //       setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
+  //       setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  //   }
+  // }, []);
 
 
   return (
     <>
     <Header />
     <Pagenation
+      axiosInstance={axiosInstance}
       currentBooksList={currentBooksList}
       setCurrentBooksList={setCurrentBooksList}
       apiUrl={apiUrl}

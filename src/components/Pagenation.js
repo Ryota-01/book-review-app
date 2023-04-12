@@ -5,15 +5,37 @@ import { useCookies } from "react-cookie";
 import '../css/Pagenation.scss'
 
 function Pagenation(props) {
+  console.log(props)
   const {
     currentBooksList,
+    axiosInstance,
     setCurrentBooksList,
     apiUrl,
     offset,
     setOffset
   } = props;
-
+  console.log(axiosInstance)
   const [cookies] = useCookies();
+
+  const backBtnClick2 = () => {
+    axiosInstance.get(10)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
+  const nextBtnClick2 = () => {
+    axiosInstance(`public/books?offset=${}`)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
 
   const backBtnClick = () => {                            //BACKボタンを押した時の処理（前の10件を表示）
     axios.get(apiUrl + (offset - 20), {
@@ -60,7 +82,7 @@ function Pagenation(props) {
         </button>
         
         <button
-          onClick={nextBtnClick}
+          onClick={nextBtnClick2}
           disabled={currentBooksList.length < 10}
           className="pagenation__button-area__select"
           >
