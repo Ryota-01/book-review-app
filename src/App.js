@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import New from './components/New';
-import Review from './components/Review';
+import Detail from './components/Detail';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import PrivateRoute from './components/PrivateRoute';
@@ -51,10 +51,10 @@ function App() {
         />
 
         <Route 
-          path="/review/:id"
+          path="/detail/:id"
           element={
             <PrivateRoute user={user}>
-              <Review />
+              <Detail />
             </PrivateRoute>}
         />
 

@@ -23,7 +23,7 @@ function BookList(props) {
             <div className='booklists__wrapper__book-image'>IMAGE</div>
             <ul className='booklists__wrapper__list'>
               <li className='booklists__wrapper__list-item__title'>
-                <Link to= {{pathname: `/review/${book.id}`, query: book}} state={book}>
+                <Link to= {{pathname: `/detail/${book.id}`, query: book}} state={book}>
                   <h3>{book.title}</h3>
                 </Link>
               </li>

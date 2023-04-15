@@ -1,12 +1,13 @@
 import React from 'react';
 import { useLocation } from 'react-router';
+import { useState } from 'react';
 import Header from './Header';
 import '../css/Review.scss';
 
 function Review() {
   const location = useLocation('')
   const bookInfo = location.state;
-  console.log(bookInfo)
+  const [loading, setLoading] = useState(true)
 
   return (
     <div className='review'>
