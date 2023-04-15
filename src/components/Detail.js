@@ -3,7 +3,9 @@ import { useLocation } from 'react-router';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import Header from './Header';
+import Edit from './Edit';
 import '../css/Detail.scss';
 
 function Detail(props) {
@@ -13,11 +15,13 @@ function Detail(props) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+
     axiosInstance.get(`/books/${params.id}`)
     .then((res) => {
       setTimeout(() => {
         setLoading(false)
         setDetail(res.data)
+        //最初にローディングを表示させるため、1秒待機
       }, 1000)
       .catch((err) => {
         console.log(err)
@@ -46,6 +50,16 @@ function Detail(props) {
             <p className='detail__container__detail-wrapper__title'>レビュー</p>
             <p  className='detail__container__detail-wrapper__content'>{detail.review}</p>
           </div>
+          <p>
+            <Link
+              to= {{pathname: `/edit/${detail.id}`, 
+              query: detail}}
+              state={detail}
+              detail={detail}
+            >
+              書籍情報を編集する
+            </Link>
+          </p>
         </div>
       </div>
       )}

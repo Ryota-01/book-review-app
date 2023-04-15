@@ -20,7 +20,6 @@ function PostReview() {
       detail : e.detail,
       review : e.review
     }
-
     axios.post(`${url}/books`, data, {
       headers : {
         'Authorization': `Bearer ${cookies.token}`
@@ -40,11 +39,8 @@ function PostReview() {
       <Header />
       <div className='post-review__container'>
         <h2 className='post-review__container__title'>レビューを投稿する</h2>
-
         <form className='post-review__container__form' onSubmit={handleSubmit(onPostReview)}>
-
           <ul className='post-review__container__form__list'>
-
             <li className='post-review__container__form__list-item'>
               <label for='title'>
                 <p>書籍タイトル *</p>

@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import New from './components/New';
 import Detail from './components/Detail';
+import Edit from './components/Edit';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import PrivateRoute from './components/PrivateRoute';
@@ -71,7 +72,18 @@ function App() {
                 cookies={cookies}
                 user={user}
                 axiosInstance={axiosInstance}
+              />
+            </PrivateRoute>}
+        />
 
+        <Route 
+          path="/edit/:id"
+          element={
+            <PrivateRoute user={user}>
+              <Edit
+                cookies={cookies}
+                user={user}
+                axiosInstance={axiosInstance}
               />
             </PrivateRoute>}
         />

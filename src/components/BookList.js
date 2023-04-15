@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import '../css/BookList.scss';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import userIcon from '../img/user-solid.svg';
 
 function BookList(props) {
   console.log(props)
-  const { currentBooksList } = props;
+  const { currentBooksList, axiosInstance } = props;
+  const { selectBookId, setSelectBookId } = useState('')
 
   return(
   <>
@@ -26,6 +28,15 @@ function BookList(props) {
                   to= {{pathname: `/detail/${book.id}`, 
                   query: book}}
                   state={book}
+                  onClick={() => {
+                    axiosInstance.post('/logs', {selectBookId: book.id})
+                    .then((res) => {
+                      console.log(res.config.data)
+                    })
+                    .catch((err) => {
+                      console.log(err)
+                    })
+                  }}
                 >
                   <h3>{book.title}</h3>
                 </Link>

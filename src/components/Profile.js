@@ -33,7 +33,6 @@ function UserEdit() {
 
   const onUpdata = (e) => {
     if(window.confirm('ユーザー名を更新しますか？')) {
-
       const data = {
         name: e.name
       }
