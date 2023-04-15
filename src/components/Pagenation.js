@@ -16,16 +16,6 @@ function Pagenation(props) {
 
   const [cookies] = useCookies();
 
-  const backBtnClick2 = () => {
-    axiosInstance.get(10)
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
-
   const backBtnClick = () => {                            //BACKボタンを押した時の処理（前の10件を表示
     axiosInstance(`public/books?offset=${offset - 10}`)
     .then((res) => {
@@ -48,22 +38,6 @@ function Pagenation(props) {
       console.log(err)
     })
   }
-
-
-  // const nextBtnClick = () => {                            //NEXTボタンを押した時の処理（次の10件を表示）
-  //   axios.get(apiUrl + offset, {
-  //     headers : {
-  //       'Authorization': `Bearer ${cookies.token}`,
-  //     }
-  //   })
-  //   .then((res) => {
-  //     setCurrentBooksList(res.data)
-  //     setOffset(offset + 10)
-  //   })
-  //   .catch((err) => {
-  //     console.log(err)
-  //   })
-  // }
 
   return (
     <div className='pagenation'>

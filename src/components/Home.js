@@ -12,11 +12,9 @@ function Home() {
   const [currentBooksList, setCurrentBooksList] = useState([]);        //現在の書籍一覧を格納する変数
   const [cookies] = useCookies();
   const [offset, setOffSet] = useState(0)                             //offset値を格納
-  const baseURL = 'https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/'
+
   const axiosInstance = axios.create({
-    baseURL : baseURL,
-    publicURL : baseURL + 'public/books?offset=',
-    privateURL : baseURL + 'books?offset=',
+    baseURL :  'https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/',
     headers : {
       'Authorization': `Bearer ${cookies.token}`
     }
@@ -24,8 +22,7 @@ function Home() {
 
   useEffect(() => {
     if(!user) {
-      console.log(axiosInstance)
-      axiosInstance.get()
+      axiosInstance.get(`/public/books?offset=${offset}`)
       .then((res) => {
         setCurrentBooksList(res.data)                     //最初に取得した書籍一覧をセット
         setOffSet(res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
@@ -44,35 +41,6 @@ function Home() {
       })
     }  
   }, [])
-
-  // useEffect(() => {                                                   //書籍一覧APIを取得
-  //   if(!user) {
-  //     axios.get('https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/public/books?offset=')
-  //     .then((res) => {
-  //       setCurrentBooksList(res.data)                     //最初に取得した書籍一覧をセット
-  //       setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
-  //       setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  //   } else {
-  //     axios.get(baseUrl, {
-  //       headers : {
-  //         'Authorization': `Bearer ${cookies.token}`,
-  //       }
-  //     })
-  //     .then((res) => {
-  //       setCurrentBooksList(res.data)                     //取得した書籍一覧をセット
-  //       setApiUrl(res.config.url)                         //取得した書籍一覧のAPI URLをセット
-  //       setOffSet(offset + res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  //   }
-  // }, []);
-
 
   return (
     <>

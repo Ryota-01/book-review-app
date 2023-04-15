@@ -1,11 +1,12 @@
 import React from 'react';
 import '../css/BookList.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import userIcon from '../img/user-solid.svg';
 
 function BookList(props) {
 
   const { currentBooksList } = props;
+  console.log(currentBooksList)
 
   return(
   <>
