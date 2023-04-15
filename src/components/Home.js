@@ -7,18 +7,13 @@ import Pagenation from './Pagenation';
 import '../css/Home.scss';
 import { useSelector } from 'react-redux';
 
-function Home() {
+function Home(props) {
+  console.log(props)
+  const { axiosInstance } = props
   const user = useSelector((state) => state.user.isSignIn)
   const [currentBooksList, setCurrentBooksList] = useState([]);        //現在の書籍一覧を格納する変数
   const [cookies] = useCookies();
   const [offset, setOffSet] = useState(0)                             //offset値を格納
-
-  const axiosInstance = axios.create({
-    baseURL :  'https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/',
-    headers : {
-      'Authorization': `Bearer ${cookies.token}`
-    }
-  })
 
   useEffect(() => {
     if(!user) {

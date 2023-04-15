@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import userIcon from '../img/user-solid.svg';
 
 function BookList(props) {
-
+  console.log(props)
   const { currentBooksList } = props;
-  console.log(currentBooksList)
 
   return(
   <>
@@ -23,7 +22,11 @@ function BookList(props) {
             <div className='booklists__wrapper__book-image'>IMAGE</div>
             <ul className='booklists__wrapper__list'>
               <li className='booklists__wrapper__list-item__title'>
-                <Link to= {{pathname: `/detail/${book.id}`, query: book}} state={book}>
+                <Link
+                  to= {{pathname: `/detail/${book.id}`, 
+                  query: book}}
+                  state={book}
+                >
                   <h3>{book.title}</h3>
                 </Link>
               </li>

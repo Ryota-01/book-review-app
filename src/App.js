@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import New from './components/New';
@@ -14,10 +16,18 @@ import PublicRoute from './components/PublicRoute';
 function App() {
 
   const user = useSelector((state) => state.user.isSignIn)
+  const [cookies] = useCookies();
+  const axiosInstance = axios.create({
+    baseURL :  'https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/',
+    headers : {
+      'Authorization': `Bearer ${cookies.token}`
+    }
+  })
 
   return (
     <div className="App">
       <Routes>
+
         <Route
           exact path="/"
           element={
@@ -30,7 +40,10 @@ function App() {
         <Route 
           path="/home"
           element={
-            <Home />
+            <Home
+              cookies={cookies}
+              axiosInstance={axiosInstance}
+            />
           }
         />
 
@@ -54,7 +67,12 @@ function App() {
           path="/detail/:id"
           element={
             <PrivateRoute user={user}>
-              <Detail />
+              <Detail
+                cookies={cookies}
+                user={user}
+                axiosInstance={axiosInstance}
+
+              />
             </PrivateRoute>}
         />
 

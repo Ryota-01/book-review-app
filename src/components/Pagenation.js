@@ -43,6 +43,7 @@ function Pagenation(props) {
     <div className='pagenation'>
       <BookList
         currentBooksList={currentBooksList}
+        axiosInstance={axiosInstance}
       />
       <div className='pagenation__button-area'>
         <button
