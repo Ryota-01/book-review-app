@@ -45,29 +45,31 @@ function BookList(props) {
               </li>
 
               <li className='booklists__wrapper__list-item__reviewer'>
-                <img className='user-icon' src={userIcon} />
-                <p>投稿者：{reviewer} </p>
+                <img className='user-icon' src={userIcon} alt='ユーザーアイコン'/>
+                投稿者：{reviewer}
               </li>
+
               <li className='booklists__wrapper__list-item__detail'>{detail}</li>
+
               <li className='clear'></li>
-              {
-                (() => {
-                  if(userName === book.reviewer) {
-                    return (
-                      <p>
+              <li className='booklists__wrapper__list-item__edit-link'>
+                {
+                  (() => {
+                    if(userName === book.reviewer) {
+                      return (
                         <Link
                           to= {{pathname: `/edit/${book.id}`, 
                           query: book}}
                           state={book}
                           detail={book}
                         >
-                          書籍情報を編集する
+                          レビューを編集する
                         </Link>
-                    </p>
-                    )
-                  }
-                })()
-              }
+                      )
+                    }
+                  })()
+                }
+              </li>
             </ul>
           </div>
         )

@@ -11,15 +11,17 @@ function New(props) {
 
   ///「投稿」ボタンを押した時の処理
   const onPostReview = (e) => {
-    const data = {
-      title : e.title,
-      url : e.url,
-      detail : e.detail,
-      review : e.review
+    if(window.confirm('レビューを投稿しますか？')) {
+      const data = {
+        title : e.title,
+        url : e.url,
+        detail : e.detail,
+        review : e.review
+      }
+      axiosInstance.post('/books', data)
+      .then((res) => { navigate('/home') }) //投稿と同時にHomeページに遷移させる
+      .catch((err) => { console.log(err) })    
     }
-    axiosInstance.post('/books', data)
-    .then((res) => { navigate('/home') }) //投稿と同時にHomeページに遷移させる
-    .catch((err) => { console.log(err) })  
   }
 
   return (

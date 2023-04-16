@@ -4,7 +4,6 @@ import { useCookies } from "react-cookie";
 import '../css/Pagenation.scss'
 
 function Pagenation(props) {
-  console.log(props)
   const {
     currentBooksList,
     axiosInstance,
@@ -12,9 +11,6 @@ function Pagenation(props) {
     offset,
     setOffset
   } = props;
-  console.log(axiosInstance)
-
-  const [cookies] = useCookies();
 
   const backBtnClick = () => {                            //BACKボタンを押した時の処理（前の10件を表示
     axiosInstance(`public/books?offset=${offset - 10}`)
@@ -22,9 +18,7 @@ function Pagenation(props) {
       setOffset(offset - 10)
       setCurrentBooksList(res.data)
     })
-    .catch((err) => {
-      console.log(err)
-    })
+    .catch((err) => { console.log(err) })
   }
 
   const nextBtnClick = () => {
@@ -34,9 +28,7 @@ function Pagenation(props) {
       setCurrentBooksList(res.data)
       setOffset(offset + 10)
     })
-    .catch((err) => {
-      console.log(err)
-    })
+    .catch((err) => { console.log(err) })
   }
 
   return (

@@ -15,12 +15,16 @@
     .detail__container__book-info__list {
       width: 58%;
 
-      .detail__container__book-info__list__title {
-        font-size: 1.1rem;
-
+      h2 {
+        margin: 0;
+        padding: 0;
       }
 
-      .detail__container__book-info__list__detailer {
+      .detail__container__book-info__list__title {
+        font-size: 1.1rem;
+      }
+
+      .detail__container__book-info__list__reviewer {
         font-size: 0.9rem;
         margin-top: 20px;
       }

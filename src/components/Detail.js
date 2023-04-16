@@ -17,8 +17,8 @@ function Detail(props) {
       setTimeout(() => {
         setLoading(false)
         setDetail(res.data)
-        //最初にローディングを表示させるため、1秒待機
-      }, 3000)
+        //最初にローディングを表示させるため、2秒待機
+      }, 2000)
       .catch((err) => { console.log(err) })  
     })
   }, [])
@@ -26,7 +26,7 @@ function Detail(props) {
   return (
     <>
       {loading ? (
-        <div className='loader'>Loading</div>
+        <div className='loader'></div>
       ) : (
         <div className='detail'>
         <Header user={user}/>

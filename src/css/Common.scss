@@ -39,7 +39,7 @@ a {
   color: white;
   background:  $bgColor;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   border-radius: 6px;
   margin: 25px;
   padding: 10px 24px;
@@ -71,7 +71,7 @@ a {
 @mixin image($height) {
   width: 25%;
   height: $height;
-  background: lightgray;
+  background: gray;
   color: white;
   font-weight: bold;
   text-align: center;

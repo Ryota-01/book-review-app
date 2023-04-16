@@ -9,7 +9,7 @@
   }
 
   .booklists__title {
-    background: #BDBEC2;
+    background: gray;
     color: white;
     padding: 10px 10px;
   }
@@ -35,13 +35,13 @@
       .booklists__wrapper__list-item__reviewer {
         font-size: 0.9rem;
         margin-top: 10px;
-        color:  gray;
         font-weight: bold;
         display: flex;
 
         .user-icon {
           display: inline-block;
           width: 12px;
+          height: 20px;
           margin-right: 6px;
           fill: red;
         }

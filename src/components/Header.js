@@ -4,7 +4,7 @@ import { useState } from 'react'
 import axios from 'axios';
 import { useCookies } from "react-cookie";
 import { useSelector, useDispatch } from 'react-redux';
-import { signOut } from '../userSlice'
+import { signIn, signOut } from '../userSlice'
 import { Link, useNavigate } from 'react-router-dom';
 import userIcon from '../img/user-regular.svg';
 
@@ -12,18 +12,22 @@ function Header(props) {
   const user = useSelector((state) => state.user.isSignIn)
   const dispatch = useDispatch('')
   const navigate = useNavigate('')
-  const [userName, setUserName] = useState('')
-  const [cookies, setCookie, removeCookie] = useCookies('')
+  const [ userName, setUserName ] = useState('')
+  const [ cookies, setCookie, removeCookie ] = useCookies('')
+  // const [ userIcon, serUserIcon ] = useState('')
   const axiosInstance = axios.create({
     baseURL :  'https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/',
     headers : {
-      'Authorization': `Bearer ${cookies.token}`
+      'Authorization': `Bearer ${cookies.token}`,
+      'Content-Type': 'multipart/form-data'
     }
   })
 
   axiosInstance.get('/users')
-  .then((res) => { setUserName(res.data.name) })
-  .catch((err) => { console.log(err) })  
+  .then((res) => {
+    console.log(res)
+    setUserName(res.data.name) })
+  .catch((err) => { console.log(err) })
 
   //ログアウト処理
   const logout = () => {
@@ -49,7 +53,7 @@ function Header(props) {
             <div className='header__wrapper__right__user-info'>
               { user ?
                 <div className='header__user-name'>
-                  <img className='user-icon' src={userIcon} />
+                  <img className='user-icon' src={userIcon} alt='ユーザーアイコン' />
                   <p>ようこそ、{userName} さん</p>
                 </div> : <></> }
               { user ? <p className='header__user-name'><Link to='/profile'>ユーザー情報を編集</Link></p> : <></> }

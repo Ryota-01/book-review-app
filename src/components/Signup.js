@@ -21,7 +21,6 @@ function Signup() {
   const [ cookies, setCookie ] = useCookies()
 
   const onSubmit = (e) => {
-
     const data = ({
       name: e.name,
       email: e.email,

@@ -13,7 +13,7 @@ header {
     justify-content: space-between;
 
     .header__wrapper__heading {
-      color: skyblue;
+      color: #0085cd;
       padding: 30px;
     }
 
@@ -26,7 +26,8 @@ header {
         width: fit-content;
 
         .user-icon {
-          width: 30px;
+          width: 20px;
+          height: 20px;
         }
 
         .header__user-name {
@@ -37,14 +38,11 @@ header {
         .header__user-name p {
           padding-top: 5px;
         }
-
       }
-
-
-      }
+    }
 
     .header__wrapper__signup-btn {
-      @include Common.navigateBtn(#f25371);
+      @include Common.navigateBtn(#b52b2b);
       margin-right: 5px;
     }
 
@@ -53,7 +51,9 @@ header {
     }
 
     .header__wrapper__logout-login-btn {
-      @include Common.navigateBtn(#0085cd);
+      @include Common.navigateBtn(#003acd);
+      padding: 13px;
+      height: 50px;
       margin-left: 5px;
     }
 
