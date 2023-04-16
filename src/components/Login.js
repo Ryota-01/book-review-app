@@ -12,24 +12,23 @@ import axios from 'axios';
 import '../css/Login.scss';
 
 
-function Login() {
+function Login(props) {
+  console.log(props)
   const dispatch = useDispatch();
   const navigate = useNavigate('')
-  const {register, handleSubmit, formState: { errors }} = useForm()
-  const [errorMessage, setErrorMessage] = useState('')
-  const [cookies, setCookie, removeCookie] = useCookies()
+  const { axiosInstance } = props;
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  const [ errorMessage, setErrorMessage ] = useState('')
+  const [ cookies, setCookie, removeCookie ] = useCookies()
 
   const onSubmit = (e) => {
-      axios.post(`${url}/signin`, {email: e.email, password: e.password})
-      .then((res) => {
-        setCookie("token", res.data.token)
-        dispatch(signIn())
-        navigate('/home')
-      })
-      .catch((err) => {
-        console.log(err.response.data)
-        setErrorMessage(err.response.data.ErrorMessageJP)
-      })
+    axiosInstance.post('/signin', { email: e.email, password: e.password })
+    .then((res) => {
+      setCookie("token", res.data.token)
+      dispatch(signIn())
+      navigate('/home')
+    })
+    .catch((err) => { setErrorMessage(err.response.data.ErrorMessageJP) })
   }
 
   return (
@@ -37,7 +36,6 @@ function Login() {
       <Header />
       <div className='login__container'>
         <h2 className='login__container__title'>ログイン</h2>
-
         <form className='login__container__form' onSubmit={handleSubmit(onSubmit)}>
           <p>Book Review App会員の方</p>
           <p>ID（e-mail）とパスワードを入力してください</p>

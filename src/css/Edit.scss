@@ -1,0 +1,44 @@
+@use 'Common';
+
+
+.edit__container {
+  @include Common.container(80%);
+
+  .edit__container__form {
+    @include Common.formWrapper();
+
+      label {
+        display: flex;
+        margin-top: 55px;
+        p {
+          width: 30%;
+        }
+      }
+      input {
+        width: 65%;
+        padding: 10px;
+      }
+      textarea {
+        width: 65%;
+        height: 100px;
+        padding: 10px;
+      }
+      .required-errmsg {
+        width: fit-content;
+        margin-left: 30%;
+        padding: 10px 0;
+        color: red;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+  }
+  .edit__container__form__post-btn {
+    @include Common.navigateBtn(#008080);
+    margin: 20px 20px 0 auto;
+  }
+
+  .edit__container__form__post-btn:hover {
+    @include Common.hover;
+  }
+
+}

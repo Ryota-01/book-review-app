@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router';
 import Header from './Header';
 import '../css/Detail.scss';
+import '../css/Loading.scss';
 
 function Detail(props) {
   const { axiosInstance, user } = props;
@@ -17,7 +18,7 @@ function Detail(props) {
         setLoading(false)
         setDetail(res.data)
         //最初にローディングを表示させるため、1秒待機
-      }, 1000)
+      }, 3000)
       .catch((err) => { console.log(err) })  
     })
   }, [])
@@ -25,7 +26,7 @@ function Detail(props) {
   return (
     <>
       {loading ? (
-        <p className='loading'>Loading</p>
+        <div className='loader'>Loading</div>
       ) : (
         <div className='detail'>
         <Header user={user}/>
@@ -39,10 +40,9 @@ function Detail(props) {
             </ul>
           </div>
           <div className='detail__container__detail-wrapper'>
-            <p className='detail__container__detail-wrapper__title'>レビュー</p>
+            <p className='detail__container__detail-wrapper__title'>レビュー <span>★★★</span></p>
             <p  className='detail__container__detail-wrapper__content'>{detail.review}</p>
           </div>
-          <h2>{detail.reviewer}</h2>
         </div>
       </div>
       )}

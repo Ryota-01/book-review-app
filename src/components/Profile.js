@@ -5,10 +5,10 @@ import Header from './Header';
 import '../css/Profile.scss';
 
 function Profile(props) {
+  const navigate = useNavigate('')
   const { axiosInstance } = props;
   const [ currentUserName, setCurrentUserName ] = useState('')
   const { register, handleSubmit, formState: { errors } } = useForm('')
-  const navigate = useNavigate('')
 
   const back = (e) => {
     return navigate('/home');
@@ -22,9 +22,7 @@ function Profile(props) {
 
   const onUpdata = (e) => {
     if(window.confirm('ユーザー名を更新しますか？')) {
-      const data = {
-        name: e.name
-      }
+      const data = { name: e.name }
       axiosInstance.put('/users', data)
       .then((res) => {navigate('/home')})
       .catch((err) => {console.log(err)});

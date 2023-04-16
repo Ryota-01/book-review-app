@@ -62,7 +62,7 @@ function App() {
           path="/new"
           element={
             <PrivateRoute user={user}>
-              <New />
+              <New axiosInstance={axiosInstance} />
             </PrivateRoute>}
         />
 
@@ -94,7 +94,7 @@ function App() {
           path="/login"
           element={
             <PublicRoute user={user}>
-              <Login />
+              <Login axiosInstance={axiosInstance} />
             </PublicRoute>}
         />
 

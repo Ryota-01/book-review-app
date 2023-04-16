@@ -29,9 +29,25 @@
         font-size: 0.9rem;
         margin-top: 20px;
       }
-      
     }
-  
+  }
+
+  .detail__container__detail-wrapper {
+    margin-top: 20px;
+    padding: 20px;
+    background: whitesmoke;
+
+    .detail__container__detail-wrapper__title {
+      font-weight: bold;
+      font-size: 1.5rem;
+
+      span {
+        color: orange;
+      }
+    }
+    .detail__container__detail-wrapper__content {
+      margin-top: 20px;
+    }
   }
 
 }

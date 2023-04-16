@@ -5,6 +5,8 @@ $baseColor :#f3f1e4;
 header {
   width: 100%;
   background: $baseColor;
+  position: fixed;
+  top: 0;
 
   .header__wrapper {
     display: flex;

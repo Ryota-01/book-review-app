@@ -1,15 +1,12 @@
 import React from 'react'
 import Header from './Header'
-import axios from 'axios'
-import { useCookies } from "react-cookie";
-import { url } from "../Url";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-import '../css/PostReview.scss';
+import '../css/New.scss';
 
-function PostReview() {
-  const {register, handleSubmit, formState: { errors }} = useForm('')
-  const [cookies, setCookie ] = useCookies()
+function New(props) {
+  const { axiosInstance } = props;
+  const { register, handleSubmit, formState: { errors } } = useForm('')
   const navigate = useNavigate('')
 
   ///「投稿」ボタンを押した時の処理
@@ -20,18 +17,9 @@ function PostReview() {
       detail : e.detail,
       review : e.review
     }
-    axios.post(`${url}/books`, data, {
-      headers : {
-        'Authorization': `Bearer ${cookies.token}`
-      }
-    })
-    .then((res) => {
-      //投稿と同時にHomeページに遷移させる
-      navigate('/home')
-    })
-    .catch((err) => {
-      console.log(err)
-    })  
+    axiosInstance.post('/books', data)
+    .then((res) => { navigate('/home') }) //投稿と同時にHomeページに遷移させる
+    .catch((err) => { console.log(err) })  
   }
 
   return (
@@ -90,7 +78,7 @@ function PostReview() {
               {errors.review?.message && <p className='required-errmsg'>{errors.review.message}</p>}
             </li>
           </ul>
-          <button className='post-review__container__form__post-btn'>投稿する</button>
+          <input className='post-review__container__form__post-btn' type='submit' value='投稿する' />
         </form>
       </div>
 
@@ -98,4 +86,4 @@ function PostReview() {
   )
 }
 
-export default PostReview
+export default New

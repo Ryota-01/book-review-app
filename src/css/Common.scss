@@ -1,4 +1,8 @@
 
+body {
+  padding-top: 120px;
+}
+
 h1,
 h2,
 h3,
@@ -35,11 +39,12 @@ a {
   color: white;
   background:  $bgColor;
   font-weight: bold;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   border-radius: 6px;
-  padding: 0 14px;
-  height: 40px;
   margin: 25px;
+  padding: 10px 24px;
+  width: fit-content;
+  text-align: center;
   cursor: pointer;
 }
 

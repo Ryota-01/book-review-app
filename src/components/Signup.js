@@ -16,9 +16,9 @@ function Signup() {
   const user = useSelector((state) => state.user.isSignIn)
   const dispatch = useDispatch();
   const navigate = useNavigate('')
-  const [errorMessage, setErrorMessage] = useState('')
-  const {register, handleSubmit, formState: { errors }} = useForm('')
-  const [cookies, setCookie ] = useCookies()
+  const [ errorMessage, setErrorMessage ] = useState('')
+  const { register, handleSubmit, formState: { errors } } = useForm('')
+  const [ cookies, setCookie ] = useCookies()
 
   const onSubmit = (e) => {
 
@@ -51,7 +51,6 @@ function Signup() {
       })
     })
     .catch((err) => {
-      console.log(err)
       setErrorMessage('ユーザー登録に失敗しました')
     })
     if(user) return <Navigate to="/" />
