@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
 import '../css/BookList.scss';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import userIcon from '../img/user-solid.svg';
 
 function BookList(props) {
-  console.log(props)
   const { currentBooksList, axiosInstance } = props;
-  const { selectBookId, setSelectBookId } = useState('')
-
+  
   return(
   <>
     <section className='booklists'>

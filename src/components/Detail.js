@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router';
 import { useState } from 'react';
 import { useParams } from 'react-router';
-import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from './Header';
-import Edit from './Edit';
 import '../css/Detail.scss';
 
 function Detail(props) {
+  const userName = useSelector((state) => state.user.isSignIn)
+  console.log(userName)
   const {axiosInstance, user, cookies} = props;
   const [detail, setDetail] = useState([])
   const params = useParams('')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-
     axiosInstance.get(`/books/${params.id}`)
     .then((res) => {
       setTimeout(() => {

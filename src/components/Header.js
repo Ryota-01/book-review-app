@@ -16,7 +16,6 @@ function Header() {
   const [userName, setUserName] = useState('')
   const [cookies, setCookie, removeCookie] = useCookies('')
 
-  
   axios.get(`${url}users`, {
     headers : {
       'Authorization': `Bearer ${cookies.token}`
@@ -49,13 +48,10 @@ function Header() {
     <>
       <header className='header'>
         <div className='header__wrapper'>
-
           <div className='header__wrapper__left'>
             <h1 className='header__wrapper__heading'>Book Review App</h1>
           </div>
-
           <div className='header__wrapper__right'>
-
             <div className='header__wrapper__right__user-info'>
               {user ?
                 <div className='header__user-name'>

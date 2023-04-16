@@ -15,7 +15,6 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 
 function App() {
-
   const user = useSelector((state) => state.user.isSignIn)
   const [cookies] = useCookies();
   const axiosInstance = axios.create({
@@ -52,7 +51,10 @@ function App() {
           path="/profile"
           element={
             <PrivateRoute user={user}>
-              <Profile />
+              <Profile
+                axiosInstance={axiosInstance} 
+                cookies={cookies}
+              />
             </PrivateRoute>}
         />
 

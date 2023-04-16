@@ -1,31 +1,32 @@
-import React from 'react'
-import { useParams } from 'react-router'
-import { useLocation } from 'react-router'
+import React, { useState } from 'react'
+import { useParams, useLocation, useNavigate } from 'react-router'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
 import Header from './Header'
-import { param } from 'cypress/types/jquery'
 
 function Edit(props) {
   const { axiosInstance } = props;
-  const {register, handleSubmit, formState: { errors }} = useForm('')
   const location = useLocation('')
   const params = useParams('')
   const navigate = useNavigate('')
   const [edit, setEdit] = useState(location.state)
+  const{
+    register, 
+    handleSubmit, 
+    formState: { errors }} = useForm({
+      defaultValues: {
+        title: edit.title,
+        url: edit.url,
+        detail: edit.detail,
+        review: edit.review
+      }
+    })
   const onChange = (e) => setEdit(e.target.value);
 
-  const onUpdataReview = (e) => {
-    if(window.confirm('ユーザー名を更新しますか？')) {
-      const data = {
-        title : e.title,
-        url : e.url,
-        detail : e.detail,
-        review : e.review
-      }
-      axiosInstance.put(`/books/${params.id}`, data)
+  const onDeleteReview = () => {
+    if(window.confirm('書籍情報を削除しますか？')) {
+      axiosInstance.delete(`/books/${params.id}`)
       .then((res) => {
+        console.log(res.data)
         navigate('/home')
       })
       .catch((err) => {
@@ -34,6 +35,24 @@ function Edit(props) {
     }
   }
 
+  const onUpdataReview = (e) => {
+    if(window.confirm('レビューを更新しますか？')) {
+      const data = {
+        title : e.title,
+        url : e.url,
+        detail : e.detail,
+        review : e.review
+      }
+      axiosInstance.put(`/books/${params.id}`, data)
+      .then((res) => {
+        console.log(res)
+        navigate('/home')
+      })
+      .catch((err) => {
+        console.log(err)
+      })  
+    }
+  }
 
   return (
     <>
@@ -49,7 +68,6 @@ function Edit(props) {
                     id='title'
                     {...register('title', {required: '*書籍タイトルを入力してください' })}
                     type="text"
-                    value={edit.title}
                     onChange={onChange}
                   />
                 </label>
@@ -63,7 +81,6 @@ function Edit(props) {
                     id='url'
                     {...register('url')}
                     type="text"
-                    value={edit.url}
                     onChange={onChange}
                   />
                 </label>
@@ -77,7 +94,6 @@ function Edit(props) {
                     rows='3'
                     {...register('detail', {required: '*詳細を入力してください' })}
                     type="text"
-                    value={edit.detail}
                     onChange={onChange}
                   />                
                   </label>
@@ -92,16 +108,15 @@ function Edit(props) {
                     rows='6'
                     {...register('review', {required: '*レビューを入力してください' })}
                     type="text"
-                    value={edit.review}
                     onChange={onChange}
                   />
                 </label>
                 {errors.review?.message && <p className='required-errmsg'>{errors.review.message}</p>}
               </li>
             </ul>
-            <input type='submit' value='更新' />
-            <input type='submit' value='削除' />
+          <input type='submit' value='更新' />
         </form>
+        <input type='submit' value='削除' onClick={onDeleteReview}/>
       </div>
     </>
   )

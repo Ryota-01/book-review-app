@@ -2,11 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Cookies } from "react-cookie";
 
 const cookie = new Cookies();
+console.log(cookie)
 
 export const userSlice = createSlice({
   name: 'user',
-  email: 'email',
-  password: 'password',
   initialState: {
     isSignIn: cookie.get("token") !==undefined
   },
@@ -21,4 +20,5 @@ export const userSlice = createSlice({
 });
 
 export const { signIn, signOut } = userSlice.actions;
+export default userSlice.reducer;
 
