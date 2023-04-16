@@ -16,7 +16,7 @@ import PublicRoute from './components/PublicRoute';
 
 function App() {
   const user = useSelector((state) => state.user.isSignIn)
-  const [cookies] = useCookies();
+  const [cookies] = useCookies('')
   const axiosInstance = axios.create({
     baseURL :  'https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/',
     headers : {

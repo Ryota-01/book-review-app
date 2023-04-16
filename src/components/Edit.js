@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form'
 import Header from './Header'
 
 function Edit(props) {
-  const { axiosInstance } = props;
-  const location = useLocation('')
   const params = useParams('')
   const navigate = useNavigate('')
-  const [edit, setEdit] = useState(location.state)
+  const location = useLocation('')
+  const { axiosInstance } = props;
+  const [ edit, setEdit ] = useState(location.state)
   const{
     register, 
     handleSubmit, 
@@ -20,18 +20,14 @@ function Edit(props) {
         review: edit.review
       }
     })
+
   const onChange = (e) => setEdit(e.target.value);
 
   const onDeleteReview = () => {
     if(window.confirm('書籍情報を削除しますか？')) {
       axiosInstance.delete(`/books/${params.id}`)
-      .then((res) => {
-        console.log(res.data)
-        navigate('/home')
-      })
-      .catch((err) => {
-        console.log(err)
-      })  
+      .then((res) => { navigate('/home') })
+      .catch((err) => { console.log(err) })  
     }
   }
 
@@ -44,13 +40,8 @@ function Edit(props) {
         review : e.review
       }
       axiosInstance.put(`/books/${params.id}`, data)
-      .then((res) => {
-        console.log(res)
-        navigate('/home')
-      })
-      .catch((err) => {
-        console.log(err)
-      })  
+      .then((res) => { navigate('/home') })
+      .catch((err) => { console.log(err) })  
     }
   }
 

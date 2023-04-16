@@ -9,10 +9,9 @@ import { useSelector } from 'react-redux';
 
 function Home(props) {
   console.log(props)
-  const { axiosInstance } = props
+  const { axiosInstance, cookies } = props
   const user = useSelector((state) => state.user.isSignIn)
   const [currentBooksList, setCurrentBooksList] = useState([]);        //現在の書籍一覧を格納する変数
-  const [cookies] = useCookies();
   const [offset, setOffSet] = useState(0)                             //offset値を格納
 
   useEffect(() => {
@@ -20,26 +19,22 @@ function Home(props) {
       axiosInstance.get(`/public/books?offset=${offset}`)
       .then((res) => {
         setCurrentBooksList(res.data)                     //最初に取得した書籍一覧をセット
-        setOffSet(res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
+        setOffSet(res.data.length)                        //取得したデータの配列のlengthを、offsetの値としてセット
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => { console.log(err) })
     } else {
       axiosInstance.get(`/books?offset=${offset}`)
       .then((res) => {
         setCurrentBooksList(res.data)                     //最初に取得した書籍一覧をセット
-        setOffSet(res.data.length)               //取得したデータの配列のlengthを、offsetの値としてセット
+        setOffSet(res.data.length)                        //取得したデータの配列のlengthを、offsetの値としてセット
       })
-      .catch((err) => {
-        console.log(err)
-      })
-    }  
-  }, [])
+      .catch((err) => { console.log(err) })
+    }}, [])
 
   return (
     <>
     <Header />
+
     <Pagenation
       axiosInstance={axiosInstance}
       currentBooksList={currentBooksList}

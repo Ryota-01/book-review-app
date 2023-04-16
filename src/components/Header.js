@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../css/Header.scss"
 import { useState } from 'react'
-import { url } from "../Url";
 import axios from 'axios';
 import { useCookies } from "react-cookie";
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,24 +8,22 @@ import { signOut } from '../userSlice'
 import { Link, useNavigate } from 'react-router-dom';
 import userIcon from '../img/user-regular.svg';
 
-function Header() {
+function Header(props) {
   const user = useSelector((state) => state.user.isSignIn)
   const dispatch = useDispatch('')
   const navigate = useNavigate('')
   const [userName, setUserName] = useState('')
   const [cookies, setCookie, removeCookie] = useCookies('')
-
-  axios.get(`${url}users`, {
+  const axiosInstance = axios.create({
+    baseURL :  'https://ifrbzeaz2b.execute-api.ap-northeast-1.amazonaws.com/',
     headers : {
       'Authorization': `Bearer ${cookies.token}`
-    },
+    }
   })
-  .then((res) => {
-    setUserName(res.data.name)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+
+  axiosInstance.get('/users')
+  .then((res) => { setUserName(res.data.name) })
+  .catch((err) => { console.log(err) })  
 
   //ログアウト処理
   const logout = () => {
@@ -35,14 +32,11 @@ function Header() {
     removeCookie('token')
   }
 
-  //ログイン
-  const login = () => {
-    navigate('/login');
-  }
+  //ログイン画面へ遷移
+  const login = () => { navigate('/login') }
 
-  const signup = () => {
-    navigate('/signup')
-  }
+  //サインアップ画面へ遷移
+  const signup = () => { navigate('/signup') }
   
   return (
     <>
@@ -53,19 +47,15 @@ function Header() {
           </div>
           <div className='header__wrapper__right'>
             <div className='header__wrapper__right__user-info'>
-              {user ?
+              { user ?
                 <div className='header__user-name'>
                   <img className='user-icon' src={userIcon} />
                   <p>ようこそ、{userName} さん</p>
-                </div> : <></>
-              }
-              {user ?
-                <p className='header__user-name'><Link to='/profile'>ユーザー情報を編集</Link></p> : <></>
-              }
+                </div> : <></> }
+              { user ? <p className='header__user-name'><Link to='/profile'>ユーザー情報を編集</Link></p> : <></> }
             </div>
 
-            {user ? 
-              <></> : 
+            { user ? <></> : 
               <button
                 className='header__wrapper__signup-btn'
                 onClick={signup}
@@ -74,7 +64,7 @@ function Header() {
               </button>
             }
             
-            {user ? 
+            { user ? 
               <button
                 className='header__wrapper__logout-login-btn'
                 onClick={logout}
@@ -90,7 +80,6 @@ function Header() {
             }
           </div>
         </div>
-
       </header>
     </>
   )

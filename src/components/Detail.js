@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Header from './Header';
 import '../css/Detail.scss';
 
 function Detail(props) {
-  const userName = useSelector((state) => state.user.isSignIn)
-  console.log(userName)
-  const {axiosInstance, user, cookies} = props;
-  const [detail, setDetail] = useState([])
+  const { axiosInstance, user } = props;
+  const [ detail, setDetail ] = useState([])
+  const [ loading, setLoading ] = useState(true)
   const params = useParams('')
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     axiosInstance.get(`/books/${params.id}`)
@@ -22,12 +18,9 @@ function Detail(props) {
         setDetail(res.data)
         //最初にローディングを表示させるため、1秒待機
       }, 1000)
-      .catch((err) => {
-        console.log(err)
-      })  
+      .catch((err) => { console.log(err) })  
     })
   }, [])
-
 
   return (
     <>
@@ -35,7 +28,7 @@ function Detail(props) {
         <p className='loading'>Loading</p>
       ) : (
         <div className='detail'>
-        <Header />
+        <Header user={user}/>
         <div className='detail__container'>
           <div className='detail__container__book-info'>
             <div className='detail__container__book-info__image'>IMAGE</div>
@@ -49,16 +42,7 @@ function Detail(props) {
             <p className='detail__container__detail-wrapper__title'>レビュー</p>
             <p  className='detail__container__detail-wrapper__content'>{detail.review}</p>
           </div>
-          <p>
-            <Link
-              to= {{pathname: `/edit/${detail.id}`, 
-              query: detail}}
-              state={detail}
-              detail={detail}
-            >
-              書籍情報を編集する
-            </Link>
-          </p>
+          <h2>{detail.reviewer}</h2>
         </div>
       </div>
       )}
