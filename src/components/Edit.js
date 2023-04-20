@@ -54,7 +54,7 @@ function Edit(props) {
         <form className='edit__container__form'>
           <ul className='edit__container__form__list'>
             <li className='edit__container__form__list-item'>
-              <label for='title'>
+              <label htmlFor='title'>
                 <p>書籍タイトル *</p>
                 <input
                   id='title'
@@ -66,7 +66,7 @@ function Edit(props) {
               {errors.title?.message && <p className='required-errmsg'>{errors.title.message}</p>}                
             </li>
             <li className='edit__container__form__list-item'>
-              <label for='url'>
+              <label htmlFor='url'>
                 <p>URL</p>
                 <input 
                   id='url'
@@ -77,7 +77,7 @@ function Edit(props) {
               </label>
             </li>
             <li className='edit__container__form__list-item'>
-              <label for='detail'>
+              <label htmlFor='detail'>
                 <p>詳細 *</p>
                 <textarea
                   id='detail'
@@ -90,7 +90,7 @@ function Edit(props) {
               {errors.detail?.message && <p className='required-errmsg'>{errors.detail.message}</p>}
             </li>
             <li className='edit__container__form__list-item'>
-              <label for='review'>
+              <label htmlFor='review'>
                 <p>レビュー *</p>
                 <textarea
                   id='review'
@@ -105,7 +105,7 @@ function Edit(props) {
           </ul>
         </form>
         <button className='edit__container__form__post-btn' onClick={handleSubmit(onUpdataReview)}>更新</button>
-        <button className='edit__container__form__post-btn' onClick={handleSubmit(onDeleteReview)}>削除</button>
+        <button className='edit__container__form__post-btn' onClick={onDeleteReview}>削除</button>
       </div>
     </>
   )

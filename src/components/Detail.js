@@ -19,8 +19,8 @@ function Detail(props) {
         setDetail(res.data)
         //最初にローディングを表示させるため、2秒待機
       }, 2000)
-      .catch((err) => { console.log(err) })  
     })
+    .catch((err) => { console.log(err) })  
   }, [])
 
   return (
