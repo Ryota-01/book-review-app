@@ -1,3 +1,11 @@
+import 'cypress-file-upload';
+Cypress.Commands.add("login", (email, password) => {
+  cy.visit("http://localhost:3000/login"); // ログインページへ一度繊維
+  cy.get('input[name="email"]').type('e@e');
+  cy.get('input[name="password"]').type(99999);
+  cy.get(".login__container__login-btn").click();
+  return cy;
+});
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite

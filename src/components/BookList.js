@@ -19,7 +19,7 @@ function BookList(props) {
         Book Review Appに投稿された本、雑誌、電子書籍の一覧ページです。随時レビュー更新中です。
       </p>
   
-      <Link to='/new'><button>レビューを投稿する</button></Link>
+      <Link to='/new'><button className='edit-btn'>レビューを投稿する</button></Link>
       
       {currentBooksList.map((book) => {                            //書籍一覧の配列の中身を、mapで展開
         const id = book.id
@@ -39,6 +39,7 @@ function BookList(props) {
                     .then((res) => { console.log(res.config.data) })
                     .catch((err) => { console.log(err) })
                   }}
+                  className='book-title'
                 >
                   <h3>{book.title}</h3>
                 </Link>

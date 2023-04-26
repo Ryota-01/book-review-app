@@ -28,7 +28,10 @@ function Login(props) {
       dispatch(signIn())
       navigate('/home')
     })
-    .catch((err) => { setErrorMessage(err.response.data.ErrorMessageJP) })
+    .catch((err) => {
+      console.log(err)
+      setErrorMessage(err.response.data.ErrorMessageJP)
+    })
   }
 
   return (
@@ -67,7 +70,8 @@ function Login(props) {
               })}
                 type="password"
               />
-                {errors.password?.message && <p className='required-errmsg'>{errors.password.message}</p>}
+                {errors.password?.message && 
+                <p className='required-errmsg'>{errors.password.message}</p>}
             </li>
           </ul>
           <p className='failure-msg'>{errorMessage}</p>
